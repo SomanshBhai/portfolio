@@ -1,3 +1,4 @@
+import YouTube from "./components/YouTube";
 import Achievements from "./components/Achievements";
 import GithubStats from "./components/GithubStats";
 import Terminal from "./components/Terminal";
