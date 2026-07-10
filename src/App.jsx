@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import Loader from "./components/Loader";
 import YouTube from "./components/YouTube";
 import Achievements from "./components/Achievements";
 import GithubStats from "./components/GithubStats";
@@ -16,6 +18,21 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 
 function App() {
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return <Loader />;
+  }
+
   return (
     <>
       <ScrollProgress />
@@ -24,7 +41,7 @@ function App() {
       <Navbar />
       <Hero />
       <About />
-      <Skills /> 
+      <Skills />
       <TechStack />
       <Education />
       <Projects />
@@ -33,7 +50,7 @@ function App() {
       <Achievements />
       <YouTube />
       <Contact />
-      <Footer />      
+      <Footer />
     </>
   );
 }
