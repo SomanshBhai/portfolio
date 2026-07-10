@@ -1,3 +1,7 @@
+import Achievements from "./components/Achievements";
+import GithubStats from "./components/GithubStats";
+import Terminal from "./components/Terminal";
+import Education from "./components/Education";
 import TechStack from "./components/TechStack";
 import ScrollProgress from "./components/ScrollProgress";
 import Cursor from "./components/Cursor";
@@ -21,7 +25,12 @@ function App() {
       <About />
       <Skills /> 
       <TechStack />
+      <Education />
       <Projects />
+      <Terminal />
+      <GithubStats />
+      <Achievements />
+      <YouTube />
       <Contact />
       <Footer />      
     </>
