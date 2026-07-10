@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { FaDiscord, FaGithub } from "react-icons/fa";
+import { FaDiscord, FaGithub, FaYoutube } from "react-icons/fa";
 
 function Navbar() {
   return (
@@ -55,6 +55,7 @@ function Navbar() {
         {/* Social Icons */}
         <div className="flex items-center gap-3">
 
+          {/* GitHub */}
           <motion.a
             href="https://github.com/SomanshBhai"
             target="_blank"
@@ -67,6 +68,7 @@ function Navbar() {
             <FaGithub size={20} />
           </motion.a>
 
+          {/* Discord */}
           <motion.a
             href="https://discord.gg/5RWTwaYzC5"
             target="_blank"
@@ -77,6 +79,19 @@ function Navbar() {
             className="flex items-center justify-center w-11 h-11 rounded-full border border-white/10 bg-white/5 text-gray-300 hover:text-green-400 hover:border-green-400 hover:bg-green-500/10 transition-all duration-300"
           >
             <FaDiscord size={20} />
+          </motion.a>
+
+          {/* YouTube */}
+          <motion.a
+            href="https://www.youtube.com/@SomanshEdits2013"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="YouTube"
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.95 }}
+            className="flex items-center justify-center w-11 h-11 rounded-full border border-white/10 bg-white/5 text-gray-300 hover:text-red-500 hover:border-red-500 hover:bg-red-500/10 transition-all duration-300"
+          >
+            <FaYoutube size={20} />
           </motion.a>
 
         </div>

@@ -1,3 +1,4 @@
+import TechStack from "./components/TechStack";
 import ScrollProgress from "./components/ScrollProgress";
 import Cursor from "./components/Cursor";
 import Background from "./components/Background";
@@ -19,6 +20,7 @@ function App() {
       <Hero />
       <About />
       <Skills /> 
+      <TechStack />
       <Projects />
       <Contact />
       <Footer />      
