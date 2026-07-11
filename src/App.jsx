@@ -18,12 +18,32 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 
 function App() {
-
   const [loading, setLoading] = useState(true);
 
+  // Always start at the top when the website loads
+  useEffect(() => {
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "instant",
+    });
+  }, []);
+
+  // Loading screen
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
+
+      // Scroll to top again after loader disappears
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "instant",
+      });
     }, 1800);
 
     return () => clearTimeout(timer);

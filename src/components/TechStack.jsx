@@ -19,51 +19,61 @@ const techStack = [
     name: "React",
     icon: <FaReact />,
     color: "text-cyan-400",
+    learning: true,
   },
   {
     name: "JavaScript",
     icon: <SiJavascript />,
     color: "text-yellow-400",
+    learning: true,
   },
   {
     name: "HTML5",
     icon: <FaHtml5 />,
     color: "text-orange-500",
+    learning: false,
   },
   {
     name: "CSS3",
     icon: <FaCss3Alt />,
     color: "text-blue-500",
+    learning: false,
   },
   {
     name: "Tailwind CSS",
     icon: <SiTailwindcss />,
     color: "text-cyan-300",
+    learning: true,
   },
   {
     name: "Python",
     icon: <FaPython />,
     color: "text-green-400",
+    learning: true,
   },
   {
     name: "Git",
     icon: <FaGitAlt />,
     color: "text-red-500",
+    learning: true,
   },
   {
     name: "GitHub",
     icon: <FaGithub />,
     color: "text-white",
+    learning: false,
   },
   {
     name: "Vercel",
     icon: <SiVercel />,
     color: "text-white",
+    learning: true,
   },
   {
     name: "Figma",
     icon: <SiFigma />,
     color: "text-pink-400",
+    learning: true,
   },
 ];
 
@@ -92,20 +102,41 @@ function TechStack() {
           {techStack.map((tech, index) => (
             <motion.div
               key={index}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                delay: index * 0.08,
+                duration: 0.5,
+              }}
               whileHover={{
-                y: -8,
+                y: -10,
                 scale: 1.05,
               }}
-              transition={{ duration: 0.25 }}
-              className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-8 flex flex-col items-center gap-5 hover:border-green-400 hover:bg-green-500/10"
+              className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-8 flex flex-col items-center gap-5 hover:border-green-400 transition-all duration-300"
             >
-              <div className={`text-6xl ${tech.color}`}>
-                {tech.icon}
-              </div>
 
-              <h3 className="font-bold text-lg text-center">
+              {/* Glow */}
+              <div className="absolute inset-0 bg-green-400/0 group-hover:bg-green-400/10 transition-all duration-300"></div>
+
+              <motion.div
+                whileHover={{ rotate: 360 }}
+                transition={{ duration: 0.8 }}
+                className={`relative text-6xl ${tech.color}`}
+              >
+                {tech.icon}
+              </motion.div>
+
+              <h3 className="relative font-bold text-lg text-center">
                 {tech.name}
               </h3>
+
+              {tech.learning && (
+                <span className="relative text-xs px-3 py-1 rounded-full bg-green-500/20 text-green-400 border border-green-500/20">
+                  Learning
+                </span>
+              )}
+
             </motion.div>
           ))}
 
