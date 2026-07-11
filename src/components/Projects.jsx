@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 
 import portfolioImg from "../assets/projects/portfolio.png";
-import calculatorImg from "../assets/projects/calculator.png";
+import calculatorImg from "../assets/projects/calculator.PNG";
 import playerImg from "../assets/projects/player.png";
 
 const projects = [
