@@ -1,20 +1,27 @@
 import Lenis from "lenis";
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import App from "./App.jsx";
 
-const lenis = new Lenis();
+const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
 
-function raf(time) {
-  lenis.raf(time);
-  requestAnimationFrame(raf);
+let lenis = null;
+let animationFrame = null;
+
+if (!isTouchDevice) {
+  lenis = new Lenis();
+
+  function raf(time) {
+    lenis.raf(time);
+    animationFrame = requestAnimationFrame(raf);
+  }
+
+  animationFrame = requestAnimationFrame(raf);
 }
 
-requestAnimationFrame(raf);
-
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <StrictMode>
     <App />
   </StrictMode>,
-)
+);
