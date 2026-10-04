@@ -14,14 +14,18 @@ function Navbar() {
         {/* Logo */}
         <a
           href="#"
-          className="text-2xl font-black tracking-[0.15em] text-white"
+          aria-label="Somansh Maurya"
+          className="flex items-center"
         >
-          SOMANSH<span className="text-green-400">.</span>
+          <img
+            src="/favicon.png"
+            alt="Somansh logo"
+            className="w-10 h-10 md:w-11 md:h-11 object-contain"
+          />
         </a>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8 uppercase tracking-[0.2em] text-sm">
-
           <a
             href="#about"
             className="text-gray-300 hover:text-green-400 transition-colors duration-300"
@@ -49,7 +53,6 @@ function Navbar() {
           >
             Contact
           </a>
-
         </div>
 
         {/* Social Icons */}
@@ -95,7 +98,6 @@ function Navbar() {
           </motion.a>
 
         </div>
-
       </nav>
     </motion.header>
   );
