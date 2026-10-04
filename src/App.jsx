@@ -27,6 +27,7 @@ import Contact from "./components/Contact";
 
 import NoxBusted from "./pages/projects/NoxBusted";
 import PortfolioProject from "./pages/projects/PortfolioProject";
+import SmartCalculator from "./pages/projects/SmartCalculator";
 
 
 function ScrollToTop() {
@@ -117,16 +118,22 @@ function App() {
           element={<PortfolioHome />}
         />
 
-        {/* Nox Busted Project */}
+        {/* Nox Busted */}
         <Route
           path="/projects/nox-busted"
           element={<NoxBusted />}
         />
 
-        {/* Portfolio Project */}
+        {/* Personal Portfolio */}
         <Route
           path="/projects/portfolio"
           element={<PortfolioProject />}
+        />
+
+        {/* Smart Calculator */}
+        <Route
+          path="/projects/smart-calculator"
+          element={<SmartCalculator />}
         />
 
       </Routes>
