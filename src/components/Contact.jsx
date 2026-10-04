@@ -117,7 +117,7 @@ function Contact() {
 
           <motion.a
             whileHover={{ y: -10 }}
-            href="https://discord.gg/5RWTwaYzC5"
+            href="https://discord.gg/5Dr34aKGHR"
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-8 text-center hover:border-[#5865F2] transition"
