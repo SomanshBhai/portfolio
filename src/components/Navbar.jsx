@@ -11,25 +11,27 @@ function Navbar() {
       behavior: "smooth",
       block: "start",
     });
+
+    // Force the URL to stay clean
+    window.history.replaceState(
+      null,
+      "",
+      window.location.pathname + window.location.search
+    );
   };
 
-  const handleSectionClick = (event, sectionId) => {
-    event.preventDefault();
-    scrollToSection(sectionId);
-
-    // Keep the URL clean
-    window.history.replaceState(null, "", window.location.pathname);
-  };
-
-  const handleLogoClick = (event) => {
-    event.preventDefault();
-
+  const goHome = () => {
     window.scrollTo({
       top: 0,
+      left: 0,
       behavior: "smooth",
     });
 
-    window.history.replaceState(null, "", window.location.pathname);
+    window.history.replaceState(
+      null,
+      "",
+      window.location.pathname + window.location.search
+    );
   };
 
   return (
@@ -42,9 +44,9 @@ function Navbar() {
       <nav className="flex items-center justify-between rounded-full border border-white/10 bg-black/40 backdrop-blur-2xl px-6 md:px-10 py-4 shadow-[0_0_30px_rgba(34,197,94,.08)]">
 
         {/* Logo */}
-        <a
-          href="/"
-          onClick={handleLogoClick}
+        <button
+          type="button"
+          onClick={goHome}
           aria-label="Home"
           className="flex items-center"
         >
@@ -53,42 +55,43 @@ function Navbar() {
             alt="Somansh logo"
             className="w-10 h-10 md:w-11 md:h-11 object-contain"
           />
-        </a>
+        </button>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8 uppercase tracking-[0.2em] text-sm">
 
-          <a
-            href="#about"
-            onClick={(event) => handleSectionClick(event, "about")}
+          <button
+            type="button"
+            onClick={() => scrollToSection("about")}
             className="text-gray-300 hover:text-green-400 transition-colors duration-300"
           >
             About
-          </a>
+          </button>
 
-          <a
-            href="#skills"
-            onClick={(event) => handleSectionClick(event, "skills")}
+          <button
+            type="button"
+            onClick={() => scrollToSection("skills")}
             className="text-gray-300 hover:text-green-400 transition-colors duration-300"
           >
             Skills
-          </a>
+          </button>
 
-          <a
-            href="#projects"
-            onClick={(event) => handleSectionClick(event, "projects")}
+          <button
+            type="button"
+            onClick={() => scrollToSection("projects")}
             className="text-gray-300 hover:text-green-400 transition-colors duration-300"
           >
             Projects
-          </a>
+          </button>
 
-          <a
-            href="#contact"
-            onClick={(event) => handleSectionClick(event, "contact")}
+          <button
+            type="button"
+            onClick={() => scrollToSection("contact")}
             className="text-gray-300 hover:text-green-400 transition-colors duration-300"
           >
             Contact
-          </a>
+          </button>
+
         </div>
 
         {/* Social Icons */}
