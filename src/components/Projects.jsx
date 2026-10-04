@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-
 import { FaGithub, FaExternalLinkAlt, FaArrowRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 import portfolioImg from "../assets/projects/portfolio.png";
 import calculatorImg from "../assets/projects/calculator.png";
@@ -122,13 +122,13 @@ function Projects() {
                 <div className="flex flex-wrap gap-4">
                   {/* View Project */}
                   {project.details && (
-                    <a
-                      href={project.details}
+                    <Link
+                      to={project.details}
                       className="flex items-center gap-2 bg-green-400 text-black px-7 py-3 rounded-full font-bold hover:scale-105 transition"
                     >
                       View Project
                       <FaArrowRight />
-                    </a>
+                    </Link>
                   )}
 
                   {/* Live Demo */}
