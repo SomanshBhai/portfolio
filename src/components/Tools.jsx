@@ -7,7 +7,7 @@ function Tools() {
       description: "A fast and simple calculator for everyday calculations.",
       icon: "⌘",
       status: "Available",
-      link: "/calculator",
+      link: "/projects/smart-calculator",
     },
     {
       title: "More Tools",
