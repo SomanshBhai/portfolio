@@ -2,6 +2,36 @@ import { motion } from "framer-motion";
 import { FaDiscord, FaGithub, FaYoutube } from "react-icons/fa";
 
 function Navbar() {
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+
+    if (!section) return;
+
+    section.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
+  const handleSectionClick = (event, sectionId) => {
+    event.preventDefault();
+    scrollToSection(sectionId);
+
+    // Keep the URL clean
+    window.history.replaceState(null, "", window.location.pathname);
+  };
+
+  const handleLogoClick = (event) => {
+    event.preventDefault();
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+
+    window.history.replaceState(null, "", window.location.pathname);
+  };
+
   return (
     <motion.header
       initial={{ y: -80, opacity: 0 }}
@@ -13,8 +43,9 @@ function Navbar() {
 
         {/* Logo */}
         <a
-          href="#"
-          aria-label="Somansh Maurya"
+          href="/"
+          onClick={handleLogoClick}
+          aria-label="Home"
           className="flex items-center"
         >
           <img
@@ -26,8 +57,10 @@ function Navbar() {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8 uppercase tracking-[0.2em] text-sm">
+
           <a
             href="#about"
+            onClick={(event) => handleSectionClick(event, "about")}
             className="text-gray-300 hover:text-green-400 transition-colors duration-300"
           >
             About
@@ -35,6 +68,7 @@ function Navbar() {
 
           <a
             href="#skills"
+            onClick={(event) => handleSectionClick(event, "skills")}
             className="text-gray-300 hover:text-green-400 transition-colors duration-300"
           >
             Skills
@@ -42,6 +76,7 @@ function Navbar() {
 
           <a
             href="#projects"
+            onClick={(event) => handleSectionClick(event, "projects")}
             className="text-gray-300 hover:text-green-400 transition-colors duration-300"
           >
             Projects
@@ -49,6 +84,7 @@ function Navbar() {
 
           <a
             href="#contact"
+            onClick={(event) => handleSectionClick(event, "contact")}
             className="text-gray-300 hover:text-green-400 transition-colors duration-300"
           >
             Contact
