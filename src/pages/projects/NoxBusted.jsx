@@ -29,6 +29,7 @@ const technologies = [
 const featureGroups = [
   {
     title: "Community",
+    description: "Systems designed to support everyday Discord communities.",
     features: [
       "Tickets",
       "Giveaways",
@@ -38,19 +39,22 @@ const featureGroups = [
   },
   {
     title: "Server Management",
+    description: "Tools that help manage and organize a Discord server.",
     features: [
       "Moderation",
       "Server Stats",
       "Reaction Roles",
     ],
   },
- {
-  title: "Experience",
-  features: [
-    "Welcome System",
-    "Utilities",
-  ],
-},
+  {
+    title: "Experience",
+    description: "Features that make a server more useful and engaging.",
+    features: [
+      "Welcome System",
+      "Utilities",
+    ],
+  },
+];
 
 const fadeUp = {
   hidden: {
@@ -285,11 +289,11 @@ export default function NoxBusted() {
             variants={fadeUp}
           >
             <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-green-400">
-              02 — Features
+              Built Around Communities
             </p>
 
             <h2 className="text-3xl font-bold md:text-4xl">
-              What Nox Busted can do.
+              Powerful systems for Discord communities.
             </h2>
           </motion.div>
 
@@ -306,9 +310,17 @@ export default function NoxBusted() {
                 }}
                 className="rounded-2xl border border-white/10 bg-[#080808] p-6"
               >
+                <p className="mb-4 text-sm font-semibold text-green-400">
+                  {String(index + 1).padStart(2, "0")}
+                </p>
+
                 <h3 className="text-xl font-bold">
                   {group.title}
                 </h3>
+
+                <p className="mt-3 text-sm leading-6 text-gray-500">
+                  {group.description}
+                </p>
 
                 <div className="mt-6 space-y-3">
                   {group.features.map((feature) => (
@@ -484,7 +496,6 @@ export default function NoxBusted() {
       {/* Project Navigation */}
       <section className="border-t border-white/10">
         <div className="mx-auto grid max-w-7xl gap-4 px-6 py-10 md:grid-cols-2 md:px-10">
-          {/* Previous */}
           <Link
             to="/projects/portfolio"
             className="group rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition hover:border-green-400/30 hover:bg-green-400/[0.03]"
@@ -506,7 +517,6 @@ export default function NoxBusted() {
             </p>
           </Link>
 
-          {/* Next */}
           <Link
             to="/projects/smart-calculator"
             className="group rounded-2xl border border-white/10 bg-white/[0.02] p-6 text-left transition hover:border-green-400/30 hover:bg-green-400/[0.03] md:text-right"
