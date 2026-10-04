@@ -39,7 +39,7 @@ const projects = [
     image: playerImg,
     github: "https://github.com/SomanshBhai/player-introduction-python",
     demo: null,
-    details: null,
+    details: "/projects/player-introduction",
     tech: ["Python"],
   },
 ];
@@ -120,6 +120,7 @@ function Projects() {
 
                 {/* Buttons */}
                 <div className="flex flex-wrap gap-4">
+                  {/* View Project */}
                   {project.details && (
                     <a
                       href={project.details}
@@ -130,6 +131,7 @@ function Projects() {
                     </a>
                   )}
 
+                  {/* Live Demo */}
                   {project.demo && (
                     <a
                       href={project.demo}
@@ -142,6 +144,7 @@ function Projects() {
                     </a>
                   )}
 
+                  {/* GitHub */}
                   <a
                     href={project.github}
                     target="_blank"
