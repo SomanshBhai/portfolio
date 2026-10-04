@@ -1,15 +1,5 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import {
-  ArrowLeft,
-  ArrowRight,
-  Github,
-  Terminal as TerminalIcon,
-  CheckCircle2,
-  Code2,
-  Server,
-  Sparkles,
-} from "lucide-react";
 
 const technologies = [
   {
@@ -80,10 +70,9 @@ export default function NoxBusted() {
           to="/"
           className="group flex items-center gap-2 text-sm text-gray-400 transition hover:text-white"
         >
-          <ArrowLeft
-            size={18}
-            className="transition-transform group-hover:-translate-x-1"
-          />
+          <span className="text-lg transition-transform group-hover:-translate-x-1">
+            ←
+          </span>
           Back to Portfolio
         </Link>
 
@@ -104,7 +93,7 @@ export default function NoxBusted() {
           className="max-w-4xl"
         >
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-green-400/20 bg-green-400/5 px-4 py-2 text-sm text-green-400">
-            <Sparkles size={15} />
+            <span>✦</span>
             Discord Bot Project
           </div>
 
@@ -125,7 +114,7 @@ export default function NoxBusted() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-xl bg-green-400 px-5 py-3 font-semibold text-black transition hover:bg-green-300"
             >
-              <Github size={18} />
+              <span>↗</span>
               View on GitHub
             </a>
 
@@ -133,7 +122,7 @@ export default function NoxBusted() {
               to="/#projects"
               className="inline-flex items-center gap-2 rounded-xl border border-white/10 px-5 py-3 font-semibold text-gray-300 transition hover:border-green-400/40 hover:text-white"
             >
-              <ArrowLeft size={18} />
+              <span>←</span>
               All Projects
             </Link>
           </div>
@@ -196,45 +185,36 @@ export default function NoxBusted() {
         <div className="grid gap-4 sm:grid-cols-3">
           {[
             {
-              icon: CheckCircle2,
               value: "10+",
               label: "Verified features",
             },
             {
-              icon: Code2,
               value: "Python",
               label: "Built with",
             },
             {
-              icon: Server,
               value: "Discord",
               label: "Platform",
             },
-          ].map((stat, index) => {
-            const Icon = stat.icon;
+          ].map((stat, index) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.1,
+              }}
+              className="rounded-2xl border border-white/10 bg-white/[0.02] p-6"
+            >
+              <p className="text-2xl font-bold">{stat.value}</p>
 
-            return (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 0.5,
-                  delay: index * 0.1,
-                }}
-                className="rounded-2xl border border-white/10 bg-white/[0.02] p-6"
-              >
-                <Icon className="mb-4 text-green-400" size={22} />
-
-                <p className="text-2xl font-bold">{stat.value}</p>
-
-                <p className="mt-1 text-sm text-gray-500">
-                  {stat.label}
-                </p>
-              </motion.div>
-            );
-          })}
+              <p className="mt-1 text-sm text-gray-500">
+                {stat.label}
+              </p>
+            </motion.div>
+          ))}
         </div>
       </section>
 
@@ -328,10 +308,7 @@ export default function NoxBusted() {
                       key={feature}
                       className="flex items-center gap-3 text-sm text-gray-400"
                     >
-                      <CheckCircle2
-                        size={17}
-                        className="shrink-0 text-green-400"
-                      />
+                      <span className="text-green-400">✓</span>
                       {feature}
                     </div>
                   ))}
@@ -373,7 +350,7 @@ export default function NoxBusted() {
               className="rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition hover:-translate-y-1 hover:border-green-400/30"
             >
               <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-green-400/10 text-green-400">
-                <TerminalIcon size={21} />
+                <span className="text-lg">&lt;/&gt;</span>
               </div>
 
               <h3 className="text-xl font-bold">
@@ -467,10 +444,9 @@ export default function NoxBusted() {
           viewport={{ once: true }}
           className="rounded-3xl border border-green-400/20 bg-green-400/[0.04] p-8 text-center md:p-12"
         >
-          <Github
-            size={30}
-            className="mx-auto text-green-400"
-          />
+          <div className="text-3xl text-green-400">
+            ◈
+          </div>
 
           <h2 className="mt-5 text-2xl font-bold md:text-3xl">
             Explore the project.
@@ -487,7 +463,7 @@ export default function NoxBusted() {
             rel="noopener noreferrer"
             className="mt-7 inline-flex items-center gap-2 rounded-xl bg-green-400 px-6 py-3 font-semibold text-black transition hover:bg-green-300"
           >
-            <Github size={18} />
+            <span>↗</span>
             Open GitHub Repository
           </a>
         </motion.div>
@@ -501,10 +477,9 @@ export default function NoxBusted() {
             className="group rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition hover:border-green-400/30 hover:bg-green-400/[0.03]"
           >
             <div className="flex items-center gap-2 text-sm text-gray-500">
-              <ArrowLeft
-                size={17}
-                className="transition-transform group-hover:-translate-x-1"
-              />
+              <span className="transition-transform group-hover:-translate-x-1">
+                ←
+              </span>
               Previous Project
             </div>
 
@@ -523,10 +498,9 @@ export default function NoxBusted() {
           >
             <div className="flex items-center justify-start gap-2 text-sm text-gray-500 md:justify-end">
               Next Project
-              <ArrowRight
-                size={17}
-                className="transition-transform group-hover:translate-x-1"
-              />
+              <span className="transition-transform group-hover:translate-x-1">
+                →
+              </span>
             </div>
 
             <h3 className="mt-3 text-xl font-bold">
