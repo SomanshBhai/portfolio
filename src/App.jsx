@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Loader from "./components/Loader";
 
@@ -20,10 +21,35 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Tools from "./components/Tools";
 
+import SmartCalculator from "./pages/projects/SmartCalculator";
+
+function Home() {
+  return (
+    <>
+      <ScrollProgress />
+      <Cursor />
+      <Background />
+      <Navbar />
+      <Hero />
+      <About />
+      <Skills />
+      <TechStack />
+      <Education />
+      <Projects />
+      <Tools />
+      <Terminal />
+      <GithubStats />
+      <Achievements />
+      <YouTube />
+      <Contact />
+      <Footer />
+    </>
+  );
+}
+
 function App() {
   const [loading, setLoading] = useState(true);
 
-  // Always start at the top when the website loads
   useEffect(() => {
     if ("scrollRestoration" in window.history) {
       window.history.scrollRestoration = "manual";
@@ -36,12 +62,10 @@ function App() {
     });
   }, []);
 
-  // Loading screen
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
 
-      // Scroll to top again after loader disappears
       window.scrollTo({
         top: 0,
         left: 0,
@@ -57,40 +81,16 @@ function App() {
   }
 
   return (
-    <>
-      <ScrollProgress />
-      <Cursor />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
 
-      <Background />
-
-      <Navbar />
-
-      <Hero />
-
-      <About />
-
-      <Skills />
-
-      <TechStack />
-
-      <Education />
-
-      <Projects />
-
-      <Tools />
-
-      <Terminal />
-
-      <GithubStats />
-
-      <Achievements />
-
-      <YouTube />
-
-      <Contact />
-
-      <Footer />
-    </>
+        <Route
+          path="/projects/smart-calculator"
+          element={<SmartCalculator />}
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
