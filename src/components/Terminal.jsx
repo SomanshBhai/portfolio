@@ -2,18 +2,28 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 
 const commands = {
-  help: "Available commands: whoami, education, skills, youtube, github, goal, clear",
+  help: "Available commands: whoami, education, skills, about, youtube, github, goal, clear",
+
   whoami: "Somansh Maurya",
-  education: "Class 9 Student • Kendriya Vidyalaya",
+
+  education: "Class 9 Student • T.A.A.C.",
+
   skills:
-    "React • JavaScript • HTML • CSS • Python • UI Design • AI Prompt Engineering",
+    "React • JavaScript • HTML • CSS • Python • Discord Bots • Web Development",
+
+  about:
+    "Class 9 student at T.A.A.C. focused on JEE while learning, building projects and exploring technology.",
+
   youtube: "@SomanshEdits2013",
+
   github: "github.com/SomanshBhai",
-  goal: "Become a Software Engineer",
+
+  goal: "JEE",
 };
 
 function Terminal() {
   const [input, setInput] = useState("");
+
   const [history, setHistory] = useState([
     {
       command: "help",
@@ -84,7 +94,9 @@ function Terminal() {
 
             {history.map((item, index) => (
               <div key={index} className="mb-6">
-                <p className="text-green-400">$ {item.command}</p>
+                <p className="text-green-400">
+                  $ {item.command}
+                </p>
 
                 <p className="text-gray-300 mt-2">
                   {item.output}
@@ -106,9 +118,7 @@ function Terminal() {
             </form>
 
           </div>
-
         </div>
-
       </motion.div>
     </section>
   );
