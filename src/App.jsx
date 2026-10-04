@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 
 import Loader from "./components/Loader";
 
@@ -21,6 +26,20 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 
 import NoxBusted from "./pages/projects/NoxBusted";
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "instant",
+    });
+  }, [pathname]);
+
+  return null;
+}
 
 function PortfolioHome() {
   const [loading, setLoading] = useState(true);
@@ -87,6 +106,8 @@ function PortfolioHome() {
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
+
       <Routes>
         <Route path="/" element={<PortfolioHome />} />
 
