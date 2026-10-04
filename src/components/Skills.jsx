@@ -8,17 +8,17 @@ const skills = [
   },
   {
     number: "02",
-    title: "UI / UX Design",
-    tech: "Figma • Responsive Design • Animations",
+    title: "Programming",
+    tech: "JavaScript • Python",
   },
   {
     number: "03",
-    title: "Programming",
-    tech: "Python • JavaScript • Learning Java",
+    title: "Discord Development",
+    tech: "Discord Bots • Python • Automation",
   },
   {
     number: "04",
-    title: "Creative Tools",
+    title: "Creative & Content",
     tech: "Photoshop • Premiere Pro • Canva",
   },
 ];
@@ -35,18 +35,18 @@ function Skills() {
         viewport={{ once: true }}
       >
         <p className="uppercase tracking-[0.4em] text-green-400 mb-4">
-          Skills
+          What I'm Learning
         </p>
 
         <h2 className="text-5xl md:text-7xl font-black mb-20">
-          WHAT I DO
+          SKILLS & TOOLS
         </h2>
       </motion.div>
 
       <div className="space-y-6">
         {skills.map((skill, index) => (
           <motion.div
-            key={index}
+            key={skill.number}
             initial={{ opacity: 0, x: -80 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
