@@ -32,12 +32,12 @@ function Hero() {
             <span className="w-3 h-3 rounded-full bg-green-400 animate-pulse"></span>
 
             <span className="text-green-400 font-semibold">
-              Currently Learning React & Python
+              Currently focused on JEE + building
             </span>
           </motion.div>
 
           <p className="uppercase tracking-[0.45em] text-green-400 mb-5">
-            SOFTWARE DEVELOPER • UI DESIGNER
+            STUDENT • BUILDER • CREATOR
           </p>
 
           <h1 className="text-6xl md:text-8xl font-black leading-tight">
@@ -47,9 +47,10 @@ function Hero() {
           </h1>
 
           <p className="mt-8 text-gray-400 text-lg md:text-xl leading-9 max-w-xl">
-            A passionate Class 9 student who enjoys building modern websites,
-            designing clean user interfaces, learning new technologies,
-            and turning creative ideas into real projects.
+            A Class 9 student focused on JEE while building things I find
+            interesting. I work with React, JavaScript and Python, experiment
+            with Discord bots and Minecraft projects, and create content along
+            the way.
           </p>
 
           <div className="flex flex-wrap gap-5 mt-10">
@@ -88,7 +89,7 @@ function Hero() {
               <div className="w-3 h-3 rounded-full bg-green-500"></div>
 
               <span className="ml-4 text-sm text-gray-400">
-                portfolio.jsx
+                somansh.js
               </span>
             </div>
 
@@ -101,77 +102,114 @@ function Hero() {
 
                 <div className="space-y-3 text-sm">
                   <div className="text-green-400 font-medium">
-                    📄 Hero.jsx
+                    📄 somansh.js
                   </div>
 
-                  <div className="text-gray-500">📄 About.jsx</div>
+                  <div className="text-gray-500">📄 projects.js</div>
 
-                  <div className="text-gray-500">📄 Projects.jsx</div>
+                  <div className="text-gray-500">📄 journey.js</div>
 
-                  <div className="text-gray-500">📄 Contact.jsx</div>
+                  <div className="text-gray-500">📄 goals.js</div>
                 </div>
               </div>
 
               {/* Code */}
-              <div className="flex-1 p-6 font-mono text-[14px] leading-8">
+              <div className="flex-1 p-6 font-mono text-[14px] leading-8 overflow-hidden">
                 <div>
                   <span className="text-purple-400">const</span>{" "}
-                  <span className="text-cyan-400">developer</span>{" "}
+                  <span className="text-cyan-400">somansh</span>{" "}
                   <span className="text-white">=</span>{" "}
                   {"{"}
                 </div>
 
                 <div className="ml-6">
-                  <span className="text-blue-400">name</span>
+                  <span className="text-blue-400">focus</span>
+                  <span className="text-white">:</span>{" "}
+                  <span className="text-green-400">"JEE"</span>
+                  <span className="text-white">,</span>
+                </div>
+
+                <div className="ml-6">
+                  <span className="text-blue-400">role</span>
                   <span className="text-white">:</span>{" "}
                   <span className="text-green-400">"</span>
 
                   <Typewriter
                     words={[
-                      "Somansh",
-                      "Software Developer",
-                      "React Developer",
+                      "Student",
+                      "Builder",
+                      "Creator",
+                      "JEE Aspirant",
                     ]}
                     loop={0}
                     cursor={false}
                     typeSpeed={70}
                     deleteSpeed={40}
-                    delaySpeed={1800}
+                    delaySpeed={1600}
                   />
 
                   <Cursor cursorColor="#22c55e" />
 
                   <span className="text-green-400">"</span>
+                  <span className="text-white">,</span>
                 </div>
 
                 <div className="ml-6">
-                  <span className="text-blue-400">skills</span>
-                  <span className="text-white">:</span>
+                  <span className="text-blue-400">building</span>
+                  <span className="text-white">:</span>{" "}
+                  {"["}
                 </div>
 
-                <div className="ml-12 flex gap-4 mt-3">
+                <div className="ml-12">
+                  <span className="text-green-400">"Websites"</span>
+                  <span className="text-white">,</span>
+                </div>
+
+                <div className="ml-12">
+                  <span className="text-green-400">"Discord Bots"</span>
+                  <span className="text-white">,</span>
+                </div>
+
+                <div className="ml-12">
+                  <span className="text-green-400">"Projects"</span>
+                </div>
+
+                <div className="ml-6">
+                  {"]"}
+                  <span className="text-white">,</span>
+                </div>
+
+                <div className="ml-6">
+                  <span className="text-blue-400">interests</span>
+                  <span className="text-white">:</span>{" "}
+                  {"["}
+                </div>
+
+                <div className="ml-12">
+                  <span className="text-green-400">"Minecraft"</span>
+                  <span className="text-white">,</span>
+                </div>
+
+                <div className="ml-12">
+                  <span className="text-green-400">"YouTube"</span>
+                  <span className="text-white">,</span>
+                </div>
+
+                <div className="ml-12">
+                  <span className="text-green-400">"Coding"</span>
+                </div>
+
+                <div className="ml-6">
+                  {"]"}
+                </div>
+
+                <div className="mt-4 text-white">{"};"}</div>
+
+                <div className="flex gap-4 mt-5">
                   <FaReact className="text-cyan-400 text-2xl" />
                   <SiJavascript className="text-yellow-400 text-2xl" />
                   <SiTailwindcss className="text-cyan-300 text-2xl" />
                 </div>
-
-                <div className="ml-6 mt-5">
-                  <span className="text-blue-400">passion</span>
-                  <span className="text-white">:</span>{" "}
-                  <span className="text-green-400">
-                    "Building beautiful websites"
-                  </span>
-                </div>
-
-                <div className="ml-6 mt-5">
-                  <span className="text-blue-400">youtube</span>
-                  <span className="text-white">:</span>{" "}
-                  <span className="text-yellow-300">
-                    "@SomanshEdits2013"
-                  </span>
-                </div>
-
-                <div className="mt-6 text-white">{"};"}</div>
               </div>
             </div>
           </div>
