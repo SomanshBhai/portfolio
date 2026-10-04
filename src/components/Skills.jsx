@@ -3,23 +3,23 @@ import { motion } from "framer-motion";
 const skills = [
   {
     number: "01",
-    title: "Frontend Development",
-    tech: "React • Vite • Tailwind CSS",
+    title: "Web Development",
+    tech: "HTML • CSS • JavaScript • React • Tailwind CSS",
   },
   {
     number: "02",
     title: "Programming",
-    tech: "JavaScript • Python",
+    tech: "Python • JavaScript • Exploring Java",
   },
   {
     number: "03",
-    title: "Discord Development",
-    tech: "Discord Bots • Python • Automation",
+    title: "Tools & Workflow",
+    tech: "Git • GitHub • VS Code • Vercel",
   },
   {
     number: "04",
-    title: "Creative & Content",
-    tech: "Photoshop • Premiere Pro • Canva",
+    title: "Creative & UI",
+    tech: "Figma • Photoshop • Premiere Pro • Canva",
   },
 ];
 
@@ -35,18 +35,18 @@ function Skills() {
         viewport={{ once: true }}
       >
         <p className="uppercase tracking-[0.4em] text-green-400 mb-4">
-          What I'm Learning
+          Skills
         </p>
 
         <h2 className="text-5xl md:text-7xl font-black mb-20">
-          SKILLS & TOOLS
+          WHAT I’M LEARNING
         </h2>
       </motion.div>
 
       <div className="space-y-6">
         {skills.map((skill, index) => (
           <motion.div
-            key={skill.number}
+            key={index}
             initial={{ opacity: 0, x: -80 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
