@@ -8,6 +8,7 @@ import {
   FaLayerGroup,
   FaLightbulb,
   FaServer,
+  FaTerminal,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -150,12 +151,97 @@ function NoxBusted() {
           </div>
         </motion.section>
 
+        {/* Project Preview */}
+        <motion.section
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="mt-20"
+        >
+          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#090909] shadow-2xl">
+            {/* Glow */}
+            <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full bg-green-400/10 blur-3xl pointer-events-none" />
+
+            {/* Window Header */}
+            <div className="relative flex items-center justify-between border-b border-white/10 px-5 py-4 bg-white/[0.02]">
+              <div className="flex items-center gap-2">
+                <span className="w-3 h-3 rounded-full bg-red-400/70" />
+                <span className="w-3 h-3 rounded-full bg-yellow-400/70" />
+                <span className="w-3 h-3 rounded-full bg-green-400/70" />
+              </div>
+
+              <div className="flex items-center gap-2 text-gray-500 text-xs font-mono">
+                <FaTerminal />
+                nox-busted
+              </div>
+
+              <div className="w-14" />
+            </div>
+
+            {/* Terminal */}
+            <div className="relative p-6 md:p-10 font-mono text-sm md:text-base">
+              <div className="flex items-center gap-3 text-gray-500 mb-8">
+                <span className="text-green-400">somansh@portfolio</span>
+                <span>:</span>
+                <span className="text-gray-300">~/nox-busted</span>
+                <span>$</span>
+                <span className="text-white">python bot.py</span>
+              </div>
+
+              <div className="space-y-4">
+                <p className="text-gray-500">
+                  <span className="text-green-400">[INFO]</span>{" "}
+                  Initializing Nox Busted...
+                </p>
+
+                <p className="text-gray-500">
+                  <span className="text-green-400">[INFO]</span>{" "}
+                  Loading Discord systems...
+                </p>
+
+                <p className="text-gray-500">
+                  <span className="text-green-400">[OK]</span>{" "}
+                  Moderation system loaded
+                </p>
+
+                <p className="text-gray-500">
+                  <span className="text-green-400">[OK]</span>{" "}
+                  Community systems loaded
+                </p>
+
+                <p className="text-gray-500">
+                  <span className="text-green-400">[OK]</span>{" "}
+                  Utility systems loaded
+                </p>
+
+                <div className="pt-4">
+                  <p className="text-green-400">
+                    ✓ Nox Busted is ready.
+                  </p>
+
+                  <p className="text-gray-600 mt-2">
+                    <span className="text-green-400">$</span>{" "}
+                    <span className="inline-block w-2 h-4 bg-green-400/70 align-middle animate-pulse" />
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom Bar */}
+            <div className="border-t border-white/10 px-5 py-3 flex flex-wrap gap-4 justify-between text-xs text-gray-600 font-mono">
+              <span>discord.py</span>
+              <span>Python</span>
+              <span>Discord Bot</span>
+            </div>
+          </div>
+        </motion.section>
+
         {/* Stats */}
         <motion.section
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.15 }}
-          className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-20"
+          transition={{ duration: 0.7, delay: 0.25 }}
+          className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-10"
         >
           {stats.map((stat) => (
             <div
@@ -439,6 +525,7 @@ function NoxBusted() {
         >
           <div className="relative overflow-hidden rounded-3xl border border-green-400/20 bg-green-400/[0.04] p-8 md:p-14 text-center">
             <div className="absolute -top-20 -right-20 w-48 h-48 rounded-full bg-green-400/10 blur-3xl" />
+
             <div className="absolute -bottom-20 -left-20 w-48 h-48 rounded-full bg-green-400/10 blur-3xl" />
 
             <div className="relative">
