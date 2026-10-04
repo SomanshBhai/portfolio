@@ -35,8 +35,12 @@ function About() {
             <span className="text-white font-semibold">
               Somansh Maurya
             </span>
-            , a Class 9 student focused on JEE while continuing to build
-            things I'm curious about.
+            , a Class 9 student at{" "}
+            <span className="text-green-400 font-semibold">
+              T.A.A.C.
+            </span>{" "}
+            and currently focused on JEE while continuing to build things
+            I'm curious about.
           </p>
 
           <p>
