@@ -5,25 +5,25 @@ const timeline = [
     year: "2025",
     title: "Started Programming",
     description:
-      "Began learning Python and explored the fundamentals of programming.",
+      "Started learning Python and discovered how much I enjoyed building things with code.",
   },
   {
     year: "2026",
-    title: "Web Development Journey",
+    title: "Explored Web Development",
     description:
-      "Started learning HTML, CSS, JavaScript, React, and modern UI design.",
+      "Learned HTML, CSS, JavaScript and React while building websites and experimenting with modern UI.",
+  },
+  {
+    year: "2026",
+    title: "Started Building More",
+    description:
+      "Worked on projects involving websites, Discord bots, automation and other things I was curious about.",
   },
   {
     year: "Now",
-    title: "Building Projects",
+    title: "JEE + Building",
     description:
-      "Creating responsive websites, improving my frontend skills, and learning every day.",
-  },
-  {
-    year: "Goal",
-    title: "Future Software Engineer",
-    description:
-      "Continue learning full-stack development and build impactful software.",
+      "My main focus is JEE while continuing to code, build projects and improve my skills whenever I can.",
   },
 ];
 
@@ -44,57 +44,60 @@ function Education() {
         </p>
 
         <h2 className="text-5xl md:text-7xl font-black text-center mb-20">
-          EDUCATION
+          JOURNEY
         </h2>
 
         <div className="grid lg:grid-cols-2 gap-16">
-
-          {/* Education Card */}
-          <div className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-10">
+          {/* Current Stage */}
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-10">
             <h3 className="text-3xl font-black mb-8">
-              🎓 Education
+              Current Stage
             </h3>
 
             <div className="space-y-5 text-gray-300 leading-8">
-
               <p>
                 <span className="text-green-400 font-semibold">
                   Class:
                 </span>{" "}
-                Class 9 Student
+                Class 9
               </p>
 
               <p>
                 <span className="text-green-400 font-semibold">
                   School:
                 </span>{" "}
-                Kendriya Vidyalaya
+                T.A.A.C.
               </p>
 
               <p>
                 <span className="text-green-400 font-semibold">
-                  Focus:
+                  Main Focus:
                 </span>{" "}
-                Web Development, Python & UI Design
+                JEE Preparation
               </p>
 
               <p>
                 <span className="text-green-400 font-semibold">
-                  Goal:
+                  Building:
                 </span>{" "}
-                Become a Software Engineer
+                Websites, Discord Bots & Personal Projects
               </p>
 
+              <p>
+                <span className="text-green-400 font-semibold">
+                  Mindset:
+                </span>{" "}
+                Learn, build, improve, repeat.
+              </p>
             </div>
           </div>
 
           {/* Timeline */}
           <div className="space-y-8">
-
             {timeline.map((item, index) => (
               <motion.div
-                key={index}
-                whileHover={{ x: 10 }}
+                key={`${item.year}-${item.title}`}
+                whileHover={{ x: 8 }}
                 className="border-l-2 border-green-500 pl-6 relative"
               >
                 <div className="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-green-500"></div>
@@ -112,9 +115,7 @@ function Education() {
                 </p>
               </motion.div>
             ))}
-
           </div>
-
         </div>
       </motion.div>
     </section>
