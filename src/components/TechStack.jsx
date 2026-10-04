@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+
 import {
   FaReact,
   FaPython,
@@ -7,6 +8,7 @@ import {
   FaGitAlt,
   FaGithub,
 } from "react-icons/fa";
+
 import {
   SiJavascript,
   SiVercel,
@@ -98,7 +100,6 @@ function TechStack() {
         </h2>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
-
           {techStack.map((tech, index) => (
             <motion.div
               key={index}
@@ -110,22 +111,18 @@ function TechStack() {
                 duration: 0.5,
               }}
               whileHover={{
-                y: -10,
-                scale: 1.05,
+                y: -6,
+                scale: 1.02,
               }}
-              className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-8 flex flex-col items-center gap-5 hover:border-green-400 transition-all duration-300"
+              className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 flex flex-col items-center gap-5 hover:border-green-400 transition-all duration-300"
             >
+              <div className="absolute inset-0 bg-green-400/0 group-hover:bg-green-400/10 transition-all duration-300 pointer-events-none" />
 
-              {/* Glow */}
-              <div className="absolute inset-0 bg-green-400/0 group-hover:bg-green-400/10 transition-all duration-300"></div>
-
-              <motion.div
-                whileHover={{ rotate: 360 }}
-                transition={{ duration: 0.8 }}
-                className={`relative text-6xl ${tech.color}`}
+              <div
+                className={`relative text-6xl ${tech.color} transition-transform duration-300 group-hover:scale-110`}
               >
                 {tech.icon}
-              </motion.div>
+              </div>
 
               <h3 className="relative font-bold text-lg text-center">
                 {tech.name}
@@ -136,10 +133,8 @@ function TechStack() {
                   Learning
                 </span>
               )}
-
             </motion.div>
           ))}
-
         </div>
       </motion.div>
     </section>
