@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 
+import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import portfolioImg from "../assets/projects/portfolio.png";
 import calculatorImg from "../assets/projects/calculator.png";
 import playerImg from "../assets/projects/player.png";
@@ -8,33 +8,36 @@ import playerImg from "../assets/projects/player.png";
 const projects = [
   {
     title: "Personal Portfolio",
-    subtitle: "React • Tailwind CSS • Framer Motion",
+    subtitle: "React • Vite • Tailwind CSS • Framer Motion",
     description:
-      "A modern portfolio website showcasing my skills, projects, and learning journey with smooth animations and a fully responsive design.",
+      "The portfolio you're looking at. I built it to experiment with React, animations, responsive design, and presenting the things I'm learning and building.",
     image: portfolioImg,
     github: "https://github.com/SomanshBhai/portfolio",
     demo: "https://portfolio-somansh-bhai.vercel.app",
-    tech: ["React", "Tailwind", "Framer Motion"],
+    tech: ["React", "Vite", "Tailwind CSS", "Framer Motion"],
+    status: "Active",
   },
   {
     title: "Smart Calculator",
     subtitle: "Python • Tkinter",
     description:
-      "A desktop calculator built with Python and Tkinter featuring a clean GUI, basic arithmetic operations, and input validation.",
+      "One of my early Python projects. It helped me practice building a graphical interface, handling user input, and organizing simple application logic.",
     image: calculatorImg,
     github: "https://github.com/SomanshBhai/smart-calculator-python",
     demo: null,
     tech: ["Python", "Tkinter"],
+    status: "Completed",
   },
   {
     title: "Player Introduction",
     subtitle: "Python",
     description:
-      "An interactive console application that introduces users through input, conditions, and beginner-friendly Python programming concepts.",
+      "A small beginner Python project built around user input and basic program logic. It represents one of the early steps in my programming journey.",
     image: playerImg,
     github: "https://github.com/SomanshBhai/player-introduction-python",
     demo: null,
     tech: ["Python"],
+    status: "Completed",
   },
 ];
 
@@ -51,18 +54,17 @@ function Projects() {
         transition={{ duration: 0.8 }}
       >
         <p className="uppercase tracking-[0.4em] text-green-400 text-center mb-4">
-          My Work
+          Things I've Built
         </p>
 
         <h2 className="text-5xl md:text-7xl font-black text-center mb-24">
-          FEATURED PROJECTS
+          PROJECTS
         </h2>
 
         <div className="space-y-20">
-
           {projects.map((project, index) => (
             <motion.div
-              key={index}
+              key={project.title}
               initial={{ opacity: 0, y: 80 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -73,31 +75,30 @@ function Projects() {
                   : ""
               }`}
             >
-
               {/* Image */}
-
               <motion.div
-                whileHover={{
-                  scale: 1.03,
-                }}
+                whileHover={{ scale: 1.02 }}
                 className="overflow-hidden rounded-3xl border border-white/10 bg-[#101010] shadow-[0_0_35px_rgba(34,197,94,.08)]"
               >
-
                 <img
                   src={project.image}
                   alt={project.title}
+                  loading="lazy"
                   className="w-full h-[340px] object-cover transition duration-500 hover:scale-105"
                 />
-
               </motion.div>
 
               {/* Content */}
-
               <div>
+                <div className="flex flex-wrap items-center gap-3 mb-4">
+                  <p className="uppercase tracking-[0.3em] text-green-400 text-sm">
+                    {project.subtitle}
+                  </p>
 
-                <p className="uppercase tracking-[0.3em] text-green-400 text-sm mb-4">
-                  {project.subtitle}
-                </p>
+                  <span className="text-xs px-3 py-1 rounded-full border border-white/10 bg-white/5 text-gray-400">
+                    {project.status}
+                  </span>
+                </div>
 
                 <h3 className="text-4xl font-black mb-6">
                   {project.title}
@@ -108,9 +109,7 @@ function Projects() {
                 </p>
 
                 {/* Tech */}
-
                 <div className="flex flex-wrap gap-3 mb-8">
-
                   {project.tech.map((item) => (
                     <span
                       key={item}
@@ -119,13 +118,10 @@ function Projects() {
                       {item}
                     </span>
                   ))}
-
                 </div>
 
                 {/* Buttons */}
-
                 <div className="flex flex-wrap gap-4">
-
                   {project.demo && (
                     <a
                       href={project.demo}
@@ -147,14 +143,10 @@ function Projects() {
                     <FaGithub />
                     GitHub
                   </a>
-
                 </div>
-
               </div>
-
             </motion.div>
           ))}
-
         </div>
       </motion.div>
     </section>
