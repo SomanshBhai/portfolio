@@ -44,15 +44,13 @@ const featureGroups = [
       "Reaction Roles",
     ],
   },
-  {
-    title: "Experience",
-    features: [
-      "Welcome System",
-      "Utilities",
-      "Music",
-    ],
-  },
-];
+ {
+  title: "Experience",
+  features: [
+    "Welcome System",
+    "Utilities",
+  ],
+},
 
 const fadeUp = {
   hidden: {
