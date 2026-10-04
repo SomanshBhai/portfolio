@@ -28,6 +28,7 @@ import Contact from "./components/Contact";
 import NoxBusted from "./pages/projects/NoxBusted";
 import PortfolioProject from "./pages/projects/PortfolioProject";
 
+
 function ScrollToTop() {
   const { pathname } = useLocation();
 
@@ -41,6 +42,7 @@ function ScrollToTop() {
 
   return null;
 }
+
 
 function PortfolioHome() {
   const [loading, setLoading] = useState(true);
@@ -101,26 +103,36 @@ function PortfolioHome() {
   );
 }
 
+
 function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
 
       <Routes>
-        <Route path="/" element={<PortfolioHome />} />
 
+        {/* Main Portfolio */}
+        <Route
+          path="/"
+          element={<PortfolioHome />}
+        />
+
+        {/* Nox Busted Project */}
         <Route
           path="/projects/nox-busted"
           element={<NoxBusted />}
         />
 
+        {/* Portfolio Project */}
         <Route
           path="/projects/portfolio"
           element={<PortfolioProject />}
         />
+
       </Routes>
     </BrowserRouter>
   );
 }
+
 
 export default App;
