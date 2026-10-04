@@ -20,49 +20,54 @@ function About() {
           </p>
 
           <h2 className="text-5xl md:text-7xl font-black leading-tight">
-            I BUILD
+            LEARNING.
             <br />
-            MODERN
+            BUILDING.
             <br />
-            EXPERIENCES.
+            IMPROVING.
           </h2>
         </div>
 
         {/* Right Side */}
         <div className="space-y-8 text-gray-400 text-lg leading-9">
-
           <p>
-            I'm <span className="text-white font-semibold">Somansh Maurya</span>,
-            a Class 9 student passionate about web development, creative
-            design, and technology.
+            I'm{" "}
+            <span className="text-white font-semibold">
+              Somansh Maurya
+            </span>
+            , a Class 9 student focused on JEE while continuing to build
+            things I'm curious about.
           </p>
 
           <p>
-            I enjoy building modern websites with React, Tailwind CSS,
-            and AI-assisted workflows. Every project helps me learn
-            something new and improve my skills.
+            I enjoy working with React, JavaScript and Python, building
+            websites and Discord bots, and experimenting with different
+            projects. I like learning by actually making things and
+            figuring out how they work.
           </p>
 
           <p>
-            Outside of coding, I enjoy Minecraft, experimenting with
-            design ideas, and exploring new technologies that make the web
-            more interactive and enjoyable.
+            Outside of coding, I'm into Minecraft, YouTube and creative
+            projects. Right now, my main focus is balancing JEE preparation
+            with coding, building better projects, and improving a little
+            every day.
           </p>
 
           <div className="grid grid-cols-2 gap-8 pt-8">
-
             <div>
-              <h3 className="text-4xl font-black text-green-400">10+</h3>
-              <p>Projects Built</p>
+              <h3 className="text-4xl font-black text-green-400">
+                JEE
+              </h3>
+              <p>Current Focus</p>
             </div>
 
             <div>
-              <h3 className="text-4xl font-black text-green-400">2026</h3>
-              <p>Learning Journey</p>
+              <h3 className="text-4xl font-black text-green-400">
+                ∞
+              </h3>
+              <p>Still Learning</p>
             </div>
-
           </div>
-
         </div>
       </motion.div>
     </section>
