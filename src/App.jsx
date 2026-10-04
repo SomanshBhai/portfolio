@@ -45,7 +45,6 @@ function ScrollToTop() {
 function PortfolioHome() {
   const [loading, setLoading] = useState(true);
 
-  // Always start at the top when the website loads
   useEffect(() => {
     if ("scrollRestoration" in window.history) {
       window.history.scrollRestoration = "manual";
@@ -58,12 +57,10 @@ function PortfolioHome() {
     });
   }, []);
 
-  // Loading screen
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
 
-      // Scroll to top again after loader disappears
       window.scrollTo({
         top: 0,
         left: 0,
