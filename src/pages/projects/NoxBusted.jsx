@@ -1,29 +1,15 @@
 import { motion } from "framer-motion";
-import {
-  FaArrowLeft,
-  FaArrowRight,
-  FaGithub,
-  FaCode,
-  FaDiscord,
-  FaLayerGroup,
-  FaLightbulb,
-  FaServer,
-  FaTerminal,
-} from "react-icons/fa";
 import { Link } from "react-router-dom";
-
-const features = [
-  "Moderation",
-  "Tickets",
-  "Giveaways",
-  "Server Stats",
-  "Reaction Roles",
-  "Leveling",
-  "Welcome System",
-  "Birthday System",
-  "Utilities",
-  "Music",
-];
+import {
+  ArrowLeft,
+  ArrowRight,
+  Github,
+  Terminal as TerminalIcon,
+  CheckCircle2,
+  Code2,
+  Server,
+  Sparkles,
+} from "lucide-react";
 
 const technologies = [
   {
@@ -43,290 +29,273 @@ const technologies = [
 const featureGroups = [
   {
     title: "Community",
-    description: "Systems designed to support everyday Discord communities.",
-    items: ["Tickets", "Giveaways", "Leveling", "Birthday System"],
+    features: [
+      "Tickets",
+      "Giveaways",
+      "Leveling",
+      "Birthday System",
+    ],
   },
   {
     title: "Server Management",
-    description: "Tools that help manage and organize a Discord server.",
-    items: ["Moderation", "Server Stats", "Reaction Roles"],
+    features: [
+      "Moderation",
+      "Server Stats",
+      "Reaction Roles",
+    ],
   },
   {
     title: "Experience",
-    description: "Features that make a server more useful and engaging.",
-    items: ["Welcome System", "Utilities", "Music"],
+    features: [
+      "Welcome System",
+      "Utilities",
+      "Music",
+    ],
   },
 ];
 
-const stats = [
-  {
-    value: "10+",
-    label: "Verified features",
+const fadeUp = {
+  hidden: {
+    opacity: 0,
+    y: 25,
   },
-  {
-    value: "Python",
-    label: "Built with",
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
   },
-  {
-    value: "Discord",
-    label: "Platform",
-  },
-];
+};
 
-function NoxBusted() {
+export default function NoxBusted() {
   return (
-    <main className="min-h-screen bg-[#050505] text-white px-6 py-20 overflow-hidden">
-      <div className="max-w-6xl mx-auto">
-        {/* Back */}
+    <main className="min-h-screen bg-[#050505] text-white">
+      {/* Top Navigation */}
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6 md:px-10">
+        <Link
+          to="/"
+          className="group flex items-center gap-2 text-sm text-gray-400 transition hover:text-white"
+        >
+          <ArrowLeft
+            size={18}
+            className="transition-transform group-hover:-translate-x-1"
+          />
+          Back to Portfolio
+        </Link>
+
+        <Link
+          to="/#projects"
+          className="rounded-xl border border-white/10 px-4 py-2 text-sm text-gray-300 transition hover:border-green-400/40 hover:text-green-400"
+        >
+          Back to Projects
+        </Link>
+      </div>
+
+      {/* Hero */}
+      <section className="mx-auto max-w-7xl px-6 pb-20 pt-10 md:px-10 md:pt-16">
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
+          initial="hidden"
+          animate="visible"
+          variants={fadeUp}
+          className="max-w-4xl"
         >
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 text-gray-400 hover:text-green-400 transition mb-16"
-          >
-            <FaArrowLeft />
-            Back to Portfolio
-          </Link>
-        </motion.div>
-
-        {/* Hero */}
-        <motion.section
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-        >
-          <div className="flex items-center gap-3 text-green-400 mb-5">
-            <FaDiscord />
-            <p className="uppercase tracking-[0.35em] text-sm">
-              Discord Bot Project
-            </p>
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-green-400/20 bg-green-400/5 px-4 py-2 text-sm text-green-400">
+            <Sparkles size={15} />
+            Discord Bot Project
           </div>
 
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10">
-            <div>
-              <p className="text-white/30 font-mono text-sm mb-4">
-                PROJECT / 001
-              </p>
+          <h1 className="text-5xl font-black tracking-tight md:text-7xl">
+            NOX <span className="text-green-400">BUSTED</span>
+          </h1>
 
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight">
-                NOX
-                <span className="text-green-400"> BUSTED</span>
-              </h1>
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-gray-400 md:text-xl">
+            An all-in-one Discord bot built to bring moderation,
+            community systems, utilities, and server features together
+            in one project.
+          </p>
 
-              <p className="text-xl md:text-2xl text-gray-400 mt-6 max-w-3xl leading-relaxed">
-                An all-in-one Discord bot built to bring useful community,
-                moderation, utility, and server-management features together
-                in one place.
-              </p>
-            </div>
-
-            <div className="hidden lg:block">
-              <div className="w-32 h-32 rounded-3xl border border-green-400/20 bg-green-400/[0.04] flex items-center justify-center">
-                <FaDiscord className="text-5xl text-green-400" />
-              </div>
-            </div>
-          </div>
-
-          <div className="flex flex-wrap gap-4 mt-10">
+          <div className="mt-8 flex flex-wrap gap-4">
             <a
               href="https://github.com/SomanshBhai/Nox-Busted"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-green-400 text-black px-7 py-3 rounded-full font-bold hover:scale-105 transition"
+              className="inline-flex items-center gap-2 rounded-xl bg-green-400 px-5 py-3 font-semibold text-black transition hover:bg-green-300"
             >
-              <FaGithub />
+              <Github size={18} />
               View on GitHub
             </a>
 
             <Link
-              to="/"
-              className="inline-flex items-center gap-3 border border-white/10 bg-white/[0.03] px-7 py-3 rounded-full font-bold text-gray-300 hover:border-green-400/40 hover:text-green-400 transition"
+              to="/#projects"
+              className="inline-flex items-center gap-2 rounded-xl border border-white/10 px-5 py-3 font-semibold text-gray-300 transition hover:border-green-400/40 hover:text-white"
             >
-              Back to Projects
-              <FaArrowRight />
+              <ArrowLeft size={18} />
+              All Projects
             </Link>
           </div>
-        </motion.section>
+        </motion.div>
 
-        {/* Project Preview */}
-        <motion.section
-          initial={{ opacity: 0, y: 50 }}
+        {/* Terminal Preview */}
+        <motion.div
+          initial={{ opacity: 0, y: 35 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="mt-20"
+          transition={{ duration: 0.7, delay: 0.15 }}
+          className="mt-16 overflow-hidden rounded-2xl border border-green-400/20 bg-[#080808] shadow-2xl shadow-green-400/5"
         >
-          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#090909] shadow-2xl">
-            {/* Glow */}
-            <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full bg-green-400/10 blur-3xl pointer-events-none" />
+          <div className="flex items-center gap-2 border-b border-white/10 bg-white/[0.03] px-5 py-4">
+            <span className="h-3 w-3 rounded-full bg-red-400/70" />
+            <span className="h-3 w-3 rounded-full bg-yellow-400/70" />
+            <span className="h-3 w-3 rounded-full bg-green-400/70" />
 
-            {/* Window Header */}
-            <div className="relative flex items-center justify-between border-b border-white/10 px-5 py-4 bg-white/[0.02]">
-              <div className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded-full bg-red-400/70" />
-                <span className="w-3 h-3 rounded-full bg-yellow-400/70" />
-                <span className="w-3 h-3 rounded-full bg-green-400/70" />
-              </div>
-
-              <div className="flex items-center gap-2 text-gray-500 text-xs font-mono">
-                <FaTerminal />
-                nox-busted
-              </div>
-
-              <div className="w-14" />
-            </div>
-
-            {/* Terminal */}
-            <div className="relative p-6 md:p-10 font-mono text-sm md:text-base">
-              <div className="flex items-center gap-3 text-gray-500 mb-8">
-                <span className="text-green-400">somansh@portfolio</span>
-                <span>:</span>
-                <span className="text-gray-300">~/nox-busted</span>
-                <span>$</span>
-                <span className="text-white">python bot.py</span>
-              </div>
-
-              <div className="space-y-4">
-                <p className="text-gray-500">
-                  <span className="text-green-400">[INFO]</span>{" "}
-                  Initializing Nox Busted...
-                </p>
-
-                <p className="text-gray-500">
-                  <span className="text-green-400">[INFO]</span>{" "}
-                  Loading Discord systems...
-                </p>
-
-                <p className="text-gray-500">
-                  <span className="text-green-400">[OK]</span>{" "}
-                  Moderation system loaded
-                </p>
-
-                <p className="text-gray-500">
-                  <span className="text-green-400">[OK]</span>{" "}
-                  Community systems loaded
-                </p>
-
-                <p className="text-gray-500">
-                  <span className="text-green-400">[OK]</span>{" "}
-                  Utility systems loaded
-                </p>
-
-                <div className="pt-4">
-                  <p className="text-green-400">
-                    ✓ Nox Busted is ready.
-                  </p>
-
-                  <p className="text-gray-600 mt-2">
-                    <span className="text-green-400">$</span>{" "}
-                    <span className="inline-block w-2 h-4 bg-green-400/70 align-middle animate-pulse" />
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Bottom Bar */}
-            <div className="border-t border-white/10 px-5 py-3 flex flex-wrap gap-4 justify-between text-xs text-gray-600 font-mono">
-              <span>discord.py</span>
-              <span>Python</span>
-              <span>Discord Bot</span>
-            </div>
+            <span className="ml-3 text-xs text-gray-500">
+              nox-busted — terminal
+            </span>
           </div>
-        </motion.section>
 
-        {/* Stats */}
-        <motion.section
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.25 }}
-          className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-10"
-        >
-          {stats.map((stat) => (
-            <div
-              key={stat.label}
-              className="border border-white/10 rounded-2xl bg-white/[0.02] p-6"
-            >
-              <p className="text-3xl font-black text-green-400">
-                {stat.value}
-              </p>
+          <div className="overflow-x-auto p-6 font-mono text-sm leading-8 md:p-8 md:text-base">
+            <p className="text-gray-500">
+              somansh@portfolio:~/nox-busted$
+              <span className="text-white"> python bot.py</span>
+            </p>
 
-              <p className="text-gray-500 mt-2 text-sm uppercase tracking-wider">
-                {stat.label}
-              </p>
-            </div>
-          ))}
-        </motion.section>
+            <p className="mt-4 text-gray-400">
+              [INFO] Initializing Nox Busted...
+            </p>
 
-        {/* Overview */}
-        <motion.section
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="mt-32"
-        >
-          <p className="text-green-400 uppercase tracking-[0.3em] text-sm mb-4">
-            01
-          </p>
+            <p className="text-gray-400">
+              [INFO] Loading Discord systems...
+            </p>
 
-          <h2 className="text-4xl md:text-5xl font-black mb-8">
-            Overview
-          </h2>
+            <p className="text-green-400">
+              [OK] Moderation system loaded
+            </p>
 
-          <div className="grid lg:grid-cols-[1.4fr_0.6fr] gap-6">
-            <div className="border border-white/10 rounded-3xl bg-white/[0.02] p-8 md:p-12">
-              <div className="flex items-center gap-3 mb-6">
-                <FaLayerGroup className="text-green-400" />
-                <span className="text-sm uppercase tracking-widest text-gray-500">
-                  The idea
-                </span>
-              </div>
+            <p className="text-green-400">
+              [OK] Community systems loaded
+            </p>
 
-              <p className="text-gray-400 leading-8 text-lg">
-                Nox Busted is a Discord bot project focused on making
-                community server management easier by combining multiple
-                useful systems into a single bot. It includes tools for
-                moderation, tickets, giveaways, server information, leveling,
-                welcome features, utilities, music, and other community
-                functionality.
-              </p>
-            </div>
+            <p className="text-green-400">
+              [OK] Utility systems loaded
+            </p>
 
-            <div className="border border-green-400/10 rounded-3xl bg-green-400/[0.03] p-8 flex flex-col justify-between">
-              <FaServer className="text-green-400 text-3xl" />
+            <p className="mt-4 text-green-400">
+              ✓ Nox Busted is ready.
+            </p>
 
-              <div className="mt-12">
-                <p className="text-gray-500 text-sm uppercase tracking-widest mb-2">
-                  Built for
-                </p>
-
-                <h3 className="text-2xl font-bold">
-                  Discord Communities
-                </h3>
-              </div>
-            </div>
+            <span className="mt-2 inline-block h-5 w-2 animate-pulse bg-green-400" />
           </div>
-        </motion.section>
+        </motion.div>
+      </section>
 
-        {/* Feature Categories */}
-        <motion.section
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="mt-32"
+      {/* Stats */}
+      <section className="mx-auto max-w-7xl px-6 md:px-10">
+        <div className="grid gap-4 sm:grid-cols-3">
+          {[
+            {
+              icon: CheckCircle2,
+              value: "10+",
+              label: "Verified features",
+            },
+            {
+              icon: Code2,
+              value: "Python",
+              label: "Built with",
+            },
+            {
+              icon: Server,
+              value: "Discord",
+              label: "Platform",
+            },
+          ].map((stat, index) => {
+            const Icon = stat.icon;
+
+            return (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.1,
+                }}
+                className="rounded-2xl border border-white/10 bg-white/[0.02] p-6"
+              >
+                <Icon className="mb-4 text-green-400" size={22} />
+
+                <p className="text-2xl font-bold">{stat.value}</p>
+
+                <p className="mt-1 text-sm text-gray-500">
+                  {stat.label}
+                </p>
+              </motion.div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* Overview */}
+      <section className="mx-auto max-w-7xl px-6 py-24 md:px-10">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={fadeUp}
+          className="grid gap-12 md:grid-cols-[1fr_1.2fr]"
         >
-          <p className="text-green-400 uppercase tracking-[0.3em] text-sm mb-4">
-            02
-          </p>
+          <div>
+            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-green-400">
+              01 — Overview
+            </p>
 
-          <h2 className="text-4xl md:text-5xl font-black mb-10">
-            Built Around Communities
-          </h2>
+            <h2 className="text-3xl font-bold md:text-4xl">
+              Built for real communities.
+            </h2>
+          </div>
 
-          <div className="grid md:grid-cols-3 gap-5">
+          <div className="space-y-5 text-gray-400 leading-8">
+            <p>
+              Nox Busted is an all-in-one Discord bot project designed
+              around the idea of combining useful server systems into
+              one maintainable application.
+            </p>
+
+            <p>
+              Instead of creating separate bots for different tasks,
+              the project brings moderation, community engagement,
+              utilities, and server experience features together.
+            </p>
+
+            <p>
+              The project also gave me practical experience with
+              Python, Discord APIs, event-driven programming, and
+              building systems that interact with real users.
+            </p>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Features */}
+      <section className="border-y border-white/5 bg-white/[0.015]">
+        <div className="mx-auto max-w-7xl px-6 py-24 md:px-10">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={fadeUp}
+          >
+            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-green-400">
+              02 — Features
+            </p>
+
+            <h2 className="text-3xl font-bold md:text-4xl">
+              What Nox Busted can do.
+            </h2>
+          </motion.div>
+
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
             {featureGroups.map((group, index) => (
               <motion.div
                 key={group.title}
@@ -337,227 +306,236 @@ function NoxBusted() {
                   duration: 0.5,
                   delay: index * 0.1,
                 }}
-                className="border border-white/10 rounded-3xl bg-[#101010] p-7 hover:border-green-400/30 transition"
+                className="rounded-2xl border border-white/10 bg-[#080808] p-6"
               >
-                <span className="text-green-400 font-mono text-sm">
-                  0{index + 1}
-                </span>
-
-                <h3 className="text-2xl font-bold mt-4">
+                <h3 className="text-xl font-bold">
                   {group.title}
                 </h3>
 
-                <p className="text-gray-500 mt-3 leading-7">
-                  {group.description}
-                </p>
-
-                <div className="flex flex-wrap gap-2 mt-6">
-                  {group.items.map((item) => (
-                    <span
-                      key={item}
-                      className="text-xs px-3 py-2 rounded-full bg-white/[0.04] border border-white/10 text-gray-400"
+                <div className="mt-6 space-y-3">
+                  {group.features.map((feature) => (
+                    <div
+                      key={feature}
+                      className="flex items-center gap-3 text-sm text-gray-400"
                     >
-                      {item}
-                    </span>
+                      <CheckCircle2
+                        size={17}
+                        className="shrink-0 text-green-400"
+                      />
+                      {feature}
+                    </div>
                   ))}
                 </div>
               </motion.div>
             ))}
           </div>
-        </motion.section>
+        </div>
+      </section>
 
-        {/* Features */}
-        <motion.section
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="mt-32"
+      {/* Tech Stack */}
+      <section className="mx-auto max-w-7xl px-6 py-24 md:px-10">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={fadeUp}
         >
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-10">
-            <div>
-              <p className="text-green-400 uppercase tracking-[0.3em] text-sm mb-4">
-                03
-              </p>
-
-              <h2 className="text-4xl md:text-5xl font-black">
-                Features
-              </h2>
-            </div>
-
-            <p className="text-gray-500 max-w-md">
-              A collection of verified systems currently represented in the
-              project.
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {features.map((feature, index) => (
-              <motion.div
-                key={feature}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 0.4,
-                  delay: index * 0.04,
-                }}
-                className="group border border-white/10 rounded-2xl bg-[#101010] p-6 hover:border-green-400/40 hover:bg-green-400/[0.03] transition"
-              >
-                <div className="flex items-center justify-between">
-                  <span className="text-green-400 font-mono font-bold">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-
-                  <FaCode className="text-gray-700 group-hover:text-green-400 transition" />
-                </div>
-
-                <h3 className="text-lg font-bold mt-6">
-                  {feature}
-                </h3>
-              </motion.div>
-            ))}
-          </div>
-        </motion.section>
-
-        {/* Tech Stack */}
-        <motion.section
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="mt-32"
-        >
-          <p className="text-green-400 uppercase tracking-[0.3em] text-sm mb-4">
-            04
+          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-green-400">
+            03 — Tech Stack
           </p>
 
-          <h2 className="text-4xl md:text-5xl font-black mb-10">
-            Tech Stack
+          <h2 className="text-3xl font-bold md:text-4xl">
+            Technologies behind the bot.
           </h2>
+        </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-5">
-            {technologies.map((technology, index) => (
-              <motion.div
-                key={technology.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 0.4,
-                  delay: index * 0.08,
-                }}
-                className="border border-white/10 rounded-3xl bg-white/[0.02] p-7 hover:border-green-400/30 transition"
-              >
-                <div className="w-11 h-11 rounded-xl bg-green-400/10 border border-green-400/20 flex items-center justify-center">
-                  <FaCode className="text-green-400" />
-                </div>
+        <div className="mt-12 grid gap-5 md:grid-cols-3">
+          {technologies.map((technology, index) => (
+            <motion.div
+              key={technology.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.1,
+              }}
+              className="rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition hover:-translate-y-1 hover:border-green-400/30"
+            >
+              <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-green-400/10 text-green-400">
+                <TerminalIcon size={21} />
+              </div>
 
-                <h3 className="text-xl font-bold mt-6">
-                  {technology.name}
-                </h3>
-
-                <p className="text-gray-500 mt-2">
-                  {technology.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.section>
-
-        {/* Learning */}
-        <motion.section
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="mt-32"
-        >
-          <p className="text-green-400 uppercase tracking-[0.3em] text-sm mb-4">
-            05
-          </p>
-
-          <h2 className="text-4xl md:text-5xl font-black mb-8">
-            What I Learned
-          </h2>
-
-          <div className="grid md:grid-cols-2 gap-5">
-            <div className="border border-white/10 rounded-3xl bg-white/[0.02] p-8 md:p-10">
-              <FaLightbulb className="text-green-400 text-2xl mb-6" />
-
-              <p className="text-gray-400 leading-8 text-lg">
-                Building a larger Discord bot involves much more than
-                creating individual commands. The project helped me work with
-                Discord APIs, bot architecture, command systems, server
-                features, and the challenges of bringing many different
-                systems together.
-              </p>
-            </div>
-
-            <div className="border border-white/10 rounded-3xl bg-[#101010] p-8 md:p-10">
-              <p className="text-gray-500 text-sm uppercase tracking-widest mb-4">
-                Development mindset
-              </p>
-
-              <h3 className="text-2xl md:text-3xl font-bold leading-tight">
-                Build systems,
-                <br />
-                not just commands.
+              <h3 className="text-xl font-bold">
+                {technology.name}
               </h3>
 
-              <div className="h-px bg-white/10 my-7" />
+              <p className="mt-2 text-sm leading-6 text-gray-500">
+                {technology.description}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
 
-              <p className="text-gray-500 leading-7">
-                Nox Busted became an opportunity to think about how separate
-                features can work together as one larger project.
+      {/* What I Learned */}
+      <section className="border-y border-white/5 bg-white/[0.015]">
+        <div className="mx-auto max-w-7xl px-6 py-24 md:px-10">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={fadeUp}
+            className="grid gap-12 md:grid-cols-[1fr_1.2fr]"
+          >
+            <div>
+              <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-green-400">
+                04 — Learning
+              </p>
+
+              <h2 className="text-3xl font-bold md:text-4xl">
+                More than just a bot.
+              </h2>
+            </div>
+
+            <div className="space-y-5 text-gray-400 leading-8">
+              <p>
+                Building Nox Busted helped me understand how larger
+                projects are organized instead of treating every
+                feature as a separate experiment.
+              </p>
+
+              <p>
+                I learned more about structuring bot systems,
+                connecting commands with Discord, handling user
+                interactions, and thinking about maintainability.
+              </p>
+
+              <p>
+                The biggest lesson was simple: building something
+                useful teaches you far more than simply writing code
+                that runs.
               </p>
             </div>
-          </div>
-        </motion.section>
+          </motion.div>
+        </div>
+      </section>
 
-        {/* GitHub CTA */}
-        <motion.section
-          initial={{ opacity: 0, y: 50 }}
+      {/* Development Mindset */}
+      <section className="mx-auto max-w-5xl px-6 py-24 text-center md:px-10">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.97 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <p className="text-sm font-semibold uppercase tracking-[0.25em] text-green-400">
+            Development Mindset
+          </p>
+
+          <h2 className="mt-5 text-3xl font-black md:text-5xl">
+            Build. Break. Learn.
+            <br />
+            <span className="text-green-400">
+              Then build it better.
+            </span>
+          </h2>
+
+          <p className="mx-auto mt-6 max-w-2xl text-gray-500 leading-7">
+            Nox Busted is part of my journey of learning by actually
+            building things, experimenting with ideas, and improving
+            them over time.
+          </p>
+        </motion.div>
+      </section>
+
+      {/* GitHub CTA */}
+      <section className="mx-auto max-w-7xl px-6 pb-20 md:px-10">
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="mt-32 mb-20"
+          className="rounded-3xl border border-green-400/20 bg-green-400/[0.04] p-8 text-center md:p-12"
         >
-          <div className="relative overflow-hidden rounded-3xl border border-green-400/20 bg-green-400/[0.04] p-8 md:p-14 text-center">
-            <div className="absolute -top-20 -right-20 w-48 h-48 rounded-full bg-green-400/10 blur-3xl" />
+          <Github
+            size={30}
+            className="mx-auto text-green-400"
+          />
 
-            <div className="absolute -bottom-20 -left-20 w-48 h-48 rounded-full bg-green-400/10 blur-3xl" />
+          <h2 className="mt-5 text-2xl font-bold md:text-3xl">
+            Explore the project.
+          </h2>
 
-            <div className="relative">
-              <p className="text-green-400 uppercase tracking-[0.3em] text-sm mb-5">
-                Explore the code
-              </p>
+          <p className="mx-auto mt-3 max-w-xl text-gray-500">
+            Check out the source code and see how Nox Busted is
+            structured on GitHub.
+          </p>
 
-              <h2 className="text-3xl md:text-5xl font-black">
-                Want to see Nox Busted?
-              </h2>
+          <a
+            href="https://github.com/SomanshBhai/Nox-Busted"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-7 inline-flex items-center gap-2 rounded-xl bg-green-400 px-6 py-3 font-semibold text-black transition hover:bg-green-300"
+          >
+            <Github size={18} />
+            Open GitHub Repository
+          </a>
+        </motion.div>
+      </section>
 
-              <p className="text-gray-400 max-w-2xl mx-auto mt-5 leading-7">
-                Explore the public repository to see the project source code
-                and its development.
-              </p>
-
-              <a
-                href="https://github.com/SomanshBhai/Nox-Busted"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="relative inline-flex items-center gap-3 bg-green-400 text-black px-8 py-4 rounded-full font-bold mt-8 hover:scale-105 transition"
-              >
-                <FaGithub />
-                Open GitHub Repository
-                <FaArrowRight />
-              </a>
+      {/* Project Navigation */}
+      <section className="border-t border-white/10">
+        <div className="mx-auto grid max-w-7xl gap-4 px-6 py-10 md:grid-cols-2 md:px-10">
+          {/* Previous */}
+          <Link
+            to="/projects/portfolio"
+            className="group rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition hover:border-green-400/30 hover:bg-green-400/[0.03]"
+          >
+            <div className="flex items-center gap-2 text-sm text-gray-500">
+              <ArrowLeft
+                size={17}
+                className="transition-transform group-hover:-translate-x-1"
+              />
+              Previous Project
             </div>
-          </div>
-        </motion.section>
-      </div>
+
+            <h3 className="mt-3 text-xl font-bold">
+              Personal Portfolio
+            </h3>
+
+            <p className="mt-1 text-sm text-gray-500">
+              React • Tailwind CSS • Framer Motion
+            </p>
+          </Link>
+
+          {/* Next */}
+          <Link
+            to="/projects/smart-calculator"
+            className="group rounded-2xl border border-white/10 bg-white/[0.02] p-6 text-left transition hover:border-green-400/30 hover:bg-green-400/[0.03] md:text-right"
+          >
+            <div className="flex items-center justify-start gap-2 text-sm text-gray-500 md:justify-end">
+              Next Project
+              <ArrowRight
+                size={17}
+                className="transition-transform group-hover:translate-x-1"
+              />
+            </div>
+
+            <h3 className="mt-3 text-xl font-bold">
+              Smart Calculator
+            </h3>
+
+            <p className="mt-1 text-sm text-gray-500">
+              Python • Tkinter
+            </p>
+          </Link>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="border-t border-white/5 px-6 py-8 text-center text-sm text-gray-600">
+        Built by Somansh Maurya • Nox Busted
+      </footer>
     </main>
   );
 }
-
-export default NoxBusted;
