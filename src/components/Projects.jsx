@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import { FaGithub, FaExternalLinkAlt, FaArrowRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 import portfolioImg from "../assets/projects/portfolio.png";
 import calculatorImg from "../assets/projects/calculator.png";
@@ -10,7 +11,7 @@ const featuredProjects = [
     title: "Personal Portfolio",
     subtitle: "React • Tailwind CSS • Framer Motion",
     description:
-      "My personal developer portfolio and the foundation for a larger developer hub showcasing my projects, skills, learning journey, and experiments.",
+      "A modern portfolio website showcasing my skills, projects, and learning journey with smooth animations and a fully responsive design.",
     image: portfolioImg,
     github: "https://github.com/SomanshBhai/portfolio",
     demo: "https://portfolio-somansh-bhai.vercel.app",
@@ -23,7 +24,7 @@ const featuredProjects = [
       "An all-in-one Discord bot built for community servers, bringing moderation, tickets, server utilities, giveaways, leveling, welcome systems, music, and more into one bot.",
     image: null,
     github: "https://github.com/SomanshBhai/Nox-Busted",
-    demo: null,
+    details: "/projects/nox-busted",
     tech: ["Python", "discord.py", "Discord"],
   },
 ];
@@ -62,7 +63,7 @@ function ProjectCard({ project, index }) {
         index % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""
       }`}
     >
-      {/* Image / Project Preview */}
+      {/* Image */}
       {project.image ? (
         <motion.div
           whileHover={{ scale: 1.03 }}
@@ -91,7 +92,7 @@ function ProjectCard({ project, index }) {
             </h4>
 
             <p className="text-gray-500 mt-4">
-              No project preview available yet
+              Discord community bot
             </p>
           </div>
         </motion.div>
@@ -103,7 +104,9 @@ function ProjectCard({ project, index }) {
           {project.subtitle}
         </p>
 
-        <h3 className="text-4xl font-black mb-6">{project.title}</h3>
+        <h3 className="text-4xl font-black mb-6">
+          {project.title}
+        </h3>
 
         <p className="text-gray-400 leading-8 mb-8">
           {project.description}
@@ -135,6 +138,16 @@ function ProjectCard({ project, index }) {
             </a>
           )}
 
+          {project.details && (
+            <Link
+              to={project.details}
+              className="flex items-center gap-2 bg-green-400 text-black px-7 py-3 rounded-full font-bold hover:scale-105 transition"
+            >
+              View Details
+              <FaArrowRight />
+            </Link>
+          )}
+
           <a
             href={project.github}
             target="_blank"
@@ -162,7 +175,6 @@ function Projects() {
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        {/* Section Heading */}
         <p className="uppercase tracking-[0.4em] text-green-400 text-center mb-4">
           My Work
         </p>
@@ -221,7 +233,7 @@ function Projects() {
           </div>
         </div>
 
-        {/* Future Projects */}
+        {/* Coming Soon */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -234,8 +246,8 @@ function Projects() {
           </p>
 
           <p className="text-gray-400 max-w-xl mx-auto leading-7">
-            More experiments, Minecraft projects, and new builds will be added
-            here as they become real projects.
+            More experiments, Minecraft projects, and new builds will be
+            added here as they become real projects.
           </p>
         </motion.div>
       </motion.div>
