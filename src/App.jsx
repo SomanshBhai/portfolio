@@ -26,6 +26,7 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 
 import NoxBusted from "./pages/projects/NoxBusted";
+import PortfolioProject from "./pages/projects/PortfolioProject";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -114,6 +115,11 @@ function App() {
         <Route
           path="/projects/nox-busted"
           element={<NoxBusted />}
+        />
+
+        <Route
+          path="/projects/portfolio"
+          element={<PortfolioProject />}
         />
       </Routes>
     </BrowserRouter>
