@@ -17,8 +17,6 @@ function Loader() {
           className="text-6xl font-black"
           style={{
             color: "var(--theme-accent)",
-            textShadow:
-              "0 0 30px color-mix(in srgb, var(--theme-accent) 45%, transparent)",
           }}
         >
           S
@@ -65,8 +63,6 @@ function Loader() {
             className="h-full rounded-full"
             style={{
               backgroundColor: "var(--theme-accent)",
-              boxShadow:
-                "0 0 20px color-mix(in srgb, var(--theme-accent) 60%, transparent)",
             }}
           />
         </div>
