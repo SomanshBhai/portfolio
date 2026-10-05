@@ -25,6 +25,7 @@ import SmartCalculator from "./pages/projects/SmartCalculator";
 import Portfolio from "./pages/projects/PortfolioProject";
 
 import { ThemeProvider } from "./ThemeContext";
+import ThemeSwitcher from "./components/ThemeSwitcher";
 
 function Home() {
   return (
