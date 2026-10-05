@@ -31,11 +31,20 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 
 import Tools from "./components/Tools";
+
 import SmartCalculator from "./pages/projects/SmartCalculator";
+
+import Portfolio from "./pages/projects/PortfolioProject";
+
+import { ThemeProvider } from "./ThemeContext";
+
+import ThemeSwitcher from "./components/ThemeSwitcher";
 
 function Home() {
   return (
     <>
+      <ThemeSwitcher />
+
       <ScrollProgress />
 
       <Cursor />
@@ -101,22 +110,30 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter>
-      <Background />
+    <ThemeProvider>
+      <BrowserRouter>
+        {/* Keep Background mounted before Loader to prevent startup glow flash */}
+        <Background />
 
-      {loading ? (
-        <Loader />
-      ) : (
-        <Routes>
-          <Route path="/" element={<Home />} />
+        {loading ? (
+          <Loader />
+        ) : (
+          <Routes>
+            <Route path="/" element={<Home />} />
 
-          <Route
-            path="/projects/smart-calculator"
-            element={<SmartCalculator />}
-          />
-        </Routes>
-      )}
-    </BrowserRouter>
+            <Route
+              path="/projects/smart-calculator"
+              element={<SmartCalculator />}
+            />
+
+            <Route
+              path="/projects/portfolio"
+              element={<Portfolio />}
+            />
+          </Routes>
+        )}
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 
