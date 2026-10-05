@@ -91,7 +91,12 @@ function TechStack() {
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        <p className="uppercase tracking-[0.4em] text-green-400 text-center mb-4">
+        <p
+          className="uppercase tracking-[0.4em] text-center mb-4"
+          style={{
+            color: "var(--theme-accent)",
+          }}
+        >
           Technologies
         </p>
 
@@ -111,25 +116,63 @@ function TechStack() {
                 duration: 0.5,
               }}
               whileHover={{
-                y: -6,
-                scale: 1.02,
+                y: -10,
+                scale: 1.05,
               }}
-              className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 flex flex-col items-center gap-5 hover:border-green-400 transition-all duration-300"
+              className="group relative overflow-hidden rounded-3xl border backdrop-blur-xl p-8 flex flex-col items-center gap-5 transition-all duration-300"
+              style={{
+                borderColor:
+                  "color-mix(in srgb, var(--theme-border) 10%, transparent)",
+                backgroundColor:
+                  "color-mix(in srgb, var(--theme-surface) 65%, transparent)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor =
+                  "var(--theme-accent)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor =
+                  "color-mix(in srgb, var(--theme-border) 10%, transparent)";
+              }}
             >
-              <div className="absolute inset-0 bg-green-400/0 group-hover:bg-green-400/10 transition-all duration-300 pointer-events-none" />
+              {/* Theme Glow */}
 
               <div
-                className={`relative text-6xl ${tech.color} transition-transform duration-300 group-hover:scale-110`}
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none"
+                style={{
+                  background:
+                    "color-mix(in srgb, var(--theme-accent) 10%, transparent)",
+                }}
+              />
+
+              <motion.div
+                whileHover={{ rotate: 360 }}
+                transition={{ duration: 0.8 }}
+                className={`relative text-6xl ${tech.color}`}
               >
                 {tech.icon}
-              </div>
+              </motion.div>
 
-              <h3 className="relative font-bold text-lg text-center">
+              <h3
+                className="relative font-bold text-lg text-center"
+                style={{
+                  color: "var(--theme-text)",
+                }}
+              >
                 {tech.name}
               </h3>
 
               {tech.learning && (
-                <span className="relative text-xs px-3 py-1 rounded-full bg-green-500/20 text-green-400 border border-green-500/20">
+                <span
+                  className="relative text-xs px-3 py-1 rounded-full border"
+                  style={{
+                    backgroundColor:
+                      "color-mix(in srgb, var(--theme-accent) 15%, transparent)",
+                    color: "var(--theme-accent)",
+                    borderColor:
+                      "color-mix(in srgb, var(--theme-accent) 20%, transparent)",
+                  }}
+                >
                   Learning
                 </span>
               )}
