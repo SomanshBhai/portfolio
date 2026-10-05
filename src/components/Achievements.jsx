@@ -52,18 +52,18 @@ function Achievements() {
           {achievements.map((item, index) => (
             <motion.div
               key={index}
-              whileHover={{ y: -10, scale: 1.03 }}
-              className="rounded-3xl border backdrop-blur-xl p-10 text-center transition-all duration-300"
-              style={{
-                backgroundColor: "color-mix(in srgb, var(--theme-surface) 70%, transparent)",
-                borderColor: "var(--theme-border)",
-              }}
               whileHover={{
                 y: -10,
                 scale: 1.03,
                 borderColor: "var(--theme-accent)",
                 boxShadow:
                   "0 0 30px color-mix(in srgb, var(--theme-accent) 20%, transparent)",
+              }}
+              className="rounded-3xl border backdrop-blur-xl p-10 text-center transition-all duration-300"
+              style={{
+                backgroundColor:
+                  "color-mix(in srgb, var(--theme-surface) 70%, transparent)",
+                borderColor: "var(--theme-border)",
               }}
             >
               <div
