@@ -1,102 +1,57 @@
 import { motion } from "framer-motion";
+
 import { FaDiscord, FaGithub, FaYoutube } from "react-icons/fa";
 
 function Navbar() {
-  const scrollToSection = (sectionId) => {
-    const section = document.getElementById(sectionId);
-
-    if (!section) return;
-
-    section.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-
-    // Force the URL to stay clean
-    window.history.replaceState(
-      null,
-      "",
-      window.location.pathname + window.location.search
-    );
-  };
-
-  const goHome = () => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    });
-
-    window.history.replaceState(
-      null,
-      "",
-      window.location.pathname + window.location.search
-    );
-  };
-
   return (
     <motion.header
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8 }}
-      className="fixed top-5 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl"
+      className="fixed top-5 left-1/2 z-50 w-[95%] max-w-7xl -translate-x-1/2"
     >
-      <nav className="flex items-center justify-between rounded-full border border-white/10 bg-black/40 backdrop-blur-2xl px-6 md:px-10 py-4 shadow-[0_0_30px_rgba(34,197,94,.08)]">
-
+      <nav className="flex items-center justify-between rounded-full border border-white/10 bg-black/40 px-6 py-4 backdrop-blur-2xl shadow-[0_0_30px_rgba(34,197,94,.08)] md:px-10">
         {/* Logo */}
-        <button
-          type="button"
-          onClick={goHome}
-          aria-label="Home"
-          className="flex items-center"
+        <a
+          href="#"
+          className="text-2xl font-black tracking-[0.15em] text-white"
         >
-          <img
-            src="/favicon.png"
-            alt="Somansh logo"
-            className="w-10 h-10 md:w-11 md:h-11 object-contain"
-          />
-        </button>
+          SOMANSH<span className="theme-accent">.</span>
+        </a>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-8 uppercase tracking-[0.2em] text-sm">
-
-          <button
-            type="button"
-            onClick={() => scrollToSection("about")}
-            className="text-gray-300 hover:text-green-400 transition-colors duration-300"
+        <div className="hidden items-center gap-8 text-sm uppercase tracking-[0.2em] md:flex">
+          <a
+            href="#about"
+            className="text-gray-300 transition-colors duration-300 hover:text-[var(--theme-accent)]"
           >
             About
-          </button>
+          </a>
 
-          <button
-            type="button"
-            onClick={() => scrollToSection("skills")}
-            className="text-gray-300 hover:text-green-400 transition-colors duration-300"
+          <a
+            href="#skills"
+            className="text-gray-300 transition-colors duration-300 hover:text-[var(--theme-accent)]"
           >
             Skills
-          </button>
+          </a>
 
-          <button
-            type="button"
-            onClick={() => scrollToSection("projects")}
-            className="text-gray-300 hover:text-green-400 transition-colors duration-300"
+          <a
+            href="#projects"
+            className="text-gray-300 transition-colors duration-300 hover:text-[var(--theme-accent)]"
           >
             Projects
-          </button>
+          </a>
 
-          <button
-            type="button"
-            onClick={() => scrollToSection("contact")}
-            className="text-gray-300 hover:text-green-400 transition-colors duration-300"
+          <a
+            href="#contact"
+            className="text-gray-300 transition-colors duration-300 hover:text-[var(--theme-accent)]"
           >
             Contact
-          </button>
-
+          </a>
         </div>
 
         {/* Social Icons */}
         <div className="flex items-center gap-3">
-
           {/* GitHub */}
           <motion.a
             href="https://github.com/SomanshBhai"
@@ -105,7 +60,7 @@ function Navbar() {
             aria-label="GitHub"
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.95 }}
-            className="flex items-center justify-center w-11 h-11 rounded-full border border-white/10 bg-white/5 text-gray-300 hover:text-green-400 hover:border-green-400 hover:bg-green-500/10 transition-all duration-300"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-gray-300 transition-all duration-300 hover:border-[var(--theme-accent)] hover:bg-[color-mix(in_srgb,var(--theme-accent)_10%,transparent)] hover:text-[var(--theme-accent)]"
           >
             <FaGithub size={20} />
           </motion.a>
@@ -118,7 +73,7 @@ function Navbar() {
             aria-label="Discord"
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.95 }}
-            className="flex items-center justify-center w-11 h-11 rounded-full border border-white/10 bg-white/5 text-gray-300 hover:text-green-400 hover:border-green-400 hover:bg-green-500/10 transition-all duration-300"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-gray-300 transition-all duration-300 hover:border-[var(--theme-accent)] hover:bg-[color-mix(in_srgb,var(--theme-accent)_10%,transparent)] hover:text-[var(--theme-accent)]"
           >
             <FaDiscord size={20} />
           </motion.a>
@@ -131,11 +86,10 @@ function Navbar() {
             aria-label="YouTube"
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.95 }}
-            className="flex items-center justify-center w-11 h-11 rounded-full border border-white/10 bg-white/5 text-gray-300 hover:text-red-500 hover:border-red-500 hover:bg-red-500/10 transition-all duration-300"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-gray-300 transition-all duration-300 hover:border-red-500 hover:bg-red-500/10 hover:text-red-500"
           >
             <FaYoutube size={20} />
           </motion.a>
-
         </div>
       </nav>
     </motion.header>
