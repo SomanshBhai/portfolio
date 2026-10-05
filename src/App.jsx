@@ -24,6 +24,8 @@ import Tools from "./components/Tools";
 import SmartCalculator from "./pages/projects/SmartCalculator";
 import Portfolio from "./pages/projects/PortfolioProject";
 
+import { ThemeProvider } from "./ThemeContext";
+
 function Home() {
   return (
     <>
@@ -82,21 +84,23 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
+    <ThemeProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
 
-        <Route
-          path="/projects/smart-calculator"
-          element={<SmartCalculator />}
-        />
+          <Route
+            path="/projects/smart-calculator"
+            element={<SmartCalculator />}
+          />
 
-        <Route
-          path="/projects/portfolio"
-          element={<Portfolio />}
-        />
-      </Routes>
-    </BrowserRouter>
+          <Route
+            path="/projects/portfolio"
+            element={<Portfolio />}
+          />
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 
