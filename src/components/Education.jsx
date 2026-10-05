@@ -49,7 +49,11 @@ function Education() {
 
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Education Card */}
-          <div className="rounded-3xl border theme-border bg-[var(--theme-surface)] backdrop-blur-xl p-10">
+          <motion.div
+            whileHover={{ y: -5 }}
+            transition={{ duration: 0.25 }}
+            className="rounded-3xl border theme-border bg-[var(--theme-surface)] backdrop-blur-xl p-10 transition-all duration-300 hover:theme-accent-border hover:shadow-[0_0_30px_color-mix(in_srgb,var(--theme-accent)_15%,transparent)]"
+          >
             <h3 className="text-3xl font-black mb-8 theme-text">
               🎓 Education
             </h3>
@@ -83,7 +87,7 @@ function Education() {
                 Become a Software Engineer
               </p>
             </div>
-          </div>
+          </motion.div>
 
           {/* Timeline */}
           <div className="space-y-8">
@@ -91,6 +95,7 @@ function Education() {
               <motion.div
                 key={index}
                 whileHover={{ x: 10 }}
+                transition={{ duration: 0.25 }}
                 className="border-l-2 theme-accent-border pl-6 relative"
               >
                 <div className="absolute -left-[9px] top-1 w-4 h-4 rounded-full theme-accent-bg"></div>
