@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+
 import { FaGithub, FaExternalLinkAlt, FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -56,11 +57,11 @@ function Projects() {
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        <p className="uppercase tracking-[0.4em] text-green-400 text-center mb-4">
+        <p className="uppercase tracking-[0.4em] theme-accent text-center mb-4">
           My Work
         </p>
 
-        <h2 className="text-5xl md:text-7xl font-black text-center mb-24">
+        <h2 className="text-5xl md:text-7xl font-black text-center mb-24 theme-text">
           FEATURED PROJECTS
         </h2>
 
@@ -83,7 +84,8 @@ function Projects() {
                 whileHover={{
                   scale: 1.03,
                 }}
-                className="overflow-hidden rounded-3xl border border-white/10 bg-[#101010] shadow-[0_0_35px_rgba(34,197,94,.08)]"
+                transition={{ duration: 0.3 }}
+                className="overflow-hidden rounded-3xl border theme-border bg-[var(--theme-surface)] shadow-[0_0_35px_color-mix(in_srgb,var(--theme-accent)_8%,transparent)]"
               >
                 <img
                   src={project.image}
@@ -94,15 +96,15 @@ function Projects() {
 
               {/* Content */}
               <div>
-                <p className="uppercase tracking-[0.3em] text-green-400 text-sm mb-4">
+                <p className="uppercase tracking-[0.3em] theme-accent text-sm mb-4">
                   {project.subtitle}
                 </p>
 
-                <h3 className="text-4xl font-black mb-6">
+                <h3 className="text-4xl font-black mb-6 theme-text">
                   {project.title}
                 </h3>
 
-                <p className="text-gray-400 leading-8 mb-8">
+                <p className="theme-muted leading-8 mb-8">
                   {project.description}
                 </p>
 
@@ -111,7 +113,7 @@ function Projects() {
                   {project.tech.map((item) => (
                     <span
                       key={item}
-                      className="px-4 py-2 rounded-full border border-green-500/20 bg-green-500/10 text-green-400 text-sm"
+                      className="px-4 py-2 rounded-full border theme-accent-border bg-[color-mix(in_srgb,var(--theme-accent)_10%,transparent)] theme-accent text-sm transition-all duration-300 hover:bg-[color-mix(in_srgb,var(--theme-accent)_18%,transparent)]"
                     >
                       {item}
                     </span>
@@ -124,7 +126,7 @@ function Projects() {
                   {project.details && (
                     <Link
                       to={project.details}
-                      className="flex items-center gap-2 bg-green-400 text-black px-7 py-3 rounded-full font-bold hover:scale-105 transition"
+                      className="flex items-center gap-2 theme-accent-bg px-7 py-3 rounded-full font-bold theme-background transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_color-mix(in_srgb,var(--theme-accent)_30%,transparent)]"
                     >
                       View Project
                       <FaArrowRight />
@@ -137,7 +139,7 @@ function Projects() {
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 border border-green-400/40 px-7 py-3 rounded-full hover:bg-green-400 hover:text-black transition"
+                      className="flex items-center gap-2 border theme-accent-border px-7 py-3 rounded-full theme-text transition-all duration-300 hover:theme-accent-bg hover:theme-background hover:scale-105"
                     >
                       <FaExternalLinkAlt />
                       Live Demo
@@ -149,7 +151,7 @@ function Projects() {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 border border-white/20 px-7 py-3 rounded-full hover:border-green-400 hover:text-green-400 transition"
+                    className="flex items-center gap-2 border theme-border px-7 py-3 rounded-full theme-text transition-all duration-300 hover:theme-accent-border hover:theme-accent"
                   >
                     <FaGithub />
                     GitHub
