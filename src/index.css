@@ -4,14 +4,41 @@ html {
   scroll-behavior: smooth;
 }
 
+:root {
+  --theme-accent: #4ade80;
+}
+
 body {
   background: #050505;
   color: white;
   margin: 0;
   font-family: Inter, sans-serif;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 ::selection {
-  background: #22c55e;
+  background: var(--theme-accent);
   color: black;
+}
+
+.theme-accent {
+  color: var(--theme-accent);
+}
+
+.theme-accent-bg {
+  background-color: var(--theme-accent);
+}
+
+.theme-accent-border {
+  border-color: var(--theme-accent);
+}
+
+.theme-accent-glow {
+  box-shadow: 0 0 30px color-mix(
+    in srgb,
+    var(--theme-accent) 20%,
+    transparent
+  );
 }
