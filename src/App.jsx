@@ -22,6 +22,7 @@ import Contact from "./components/Contact";
 import Tools from "./components/Tools";
 
 import SmartCalculator from "./pages/projects/SmartCalculator";
+import Portfolio from "./pages/projects/Portfolio";
 
 function Home() {
   return (
@@ -88,6 +89,11 @@ function App() {
         <Route
           path="/projects/smart-calculator"
           element={<SmartCalculator />}
+        />
+
+        <Route
+          path="/projects/portfolio"
+          element={<Portfolio />}
         />
       </Routes>
     </BrowserRouter>
