@@ -34,11 +34,17 @@ function Achievements() {
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        <p className="uppercase tracking-[0.4em] text-green-400 text-center mb-4">
+        <p
+          className="uppercase tracking-[0.4em] text-center mb-4"
+          style={{ color: "var(--theme-accent)" }}
+        >
           Journey
         </p>
 
-        <h2 className="text-5xl md:text-7xl font-black text-center mb-20">
+        <h2
+          className="text-5xl md:text-7xl font-black text-center mb-20"
+          style={{ color: "var(--theme-text)" }}
+        >
           ACHIEVEMENTS
         </h2>
 
@@ -47,17 +53,37 @@ function Achievements() {
             <motion.div
               key={index}
               whileHover={{ y: -10, scale: 1.03 }}
-              className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-10 text-center hover:border-green-400 transition-all duration-300"
+              className="rounded-3xl border backdrop-blur-xl p-10 text-center transition-all duration-300"
+              style={{
+                backgroundColor: "color-mix(in srgb, var(--theme-surface) 70%, transparent)",
+                borderColor: "var(--theme-border)",
+              }}
+              whileHover={{
+                y: -10,
+                scale: 1.03,
+                borderColor: "var(--theme-accent)",
+                boxShadow:
+                  "0 0 30px color-mix(in srgb, var(--theme-accent) 20%, transparent)",
+              }}
             >
-              <div className="text-5xl text-green-400 mb-6 flex justify-center">
+              <div
+                className="text-5xl mb-6 flex justify-center"
+                style={{ color: "var(--theme-accent)" }}
+              >
                 {item.icon}
               </div>
 
-              <h3 className="text-2xl font-black mb-4">
+              <h3
+                className="text-2xl font-black mb-4"
+                style={{ color: "var(--theme-text)" }}
+              >
                 {item.title}
               </h3>
 
-              <p className="text-gray-400 leading-8">
+              <p
+                className="leading-8"
+                style={{ color: "var(--theme-muted)" }}
+              >
                 {item.description}
               </p>
             </motion.div>
