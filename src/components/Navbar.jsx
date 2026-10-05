@@ -1,53 +1,102 @@
 import { motion } from "framer-motion";
-
 import { FaDiscord, FaGithub, FaYoutube } from "react-icons/fa";
 
 function Navbar() {
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+
+    if (!section) return;
+
+    // Keep the URL clean before scrolling
+    window.history.replaceState(
+      null,
+      "",
+      window.location.pathname + window.location.search
+    );
+
+    section.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
+  const goHome = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+
+    window.history.replaceState(
+      null,
+      "",
+      window.location.pathname + window.location.search
+    );
+  };
+
   return (
     <motion.header
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8 }}
-      className="fixed top-5 left-1/2 z-50 w-[95%] max-w-7xl -translate-x-1/2"
+      className="fixed top-5 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl"
     >
-      <nav className="flex items-center justify-between rounded-full border border-white/10 bg-black/40 px-6 py-4 backdrop-blur-2xl shadow-[0_0_30px_rgba(34,197,94,.08)] md:px-10">
+      <nav
+        className="flex items-center justify-between rounded-full border theme-border backdrop-blur-2xl px-6 md:px-10 py-4 transition-all duration-300"
+        style={{
+          backgroundColor:
+            "color-mix(in srgb, var(--theme-background) 70%, transparent)",
+          boxShadow:
+            "0 0 30px color-mix(in srgb, var(--theme-accent) 8%, transparent)",
+        }}
+      >
         {/* Logo */}
-        <a
-          href="#"
-          className="text-2xl font-black tracking-[0.15em] text-white"
+        <button
+          type="button"
+          onClick={goHome}
+          aria-label="Home"
+          className="flex items-center"
         >
-          SOMANSH<span className="theme-accent">.</span>
-        </a>
+          <img
+            src="/favicon.png"
+            alt="Somansh logo"
+            className="w-10 h-10 md:w-11 md:h-11 object-contain"
+          />
+        </button>
 
         {/* Desktop Menu */}
-        <div className="hidden items-center gap-8 text-sm uppercase tracking-[0.2em] md:flex">
-          <a
-            href="#about"
-            className="text-gray-300 transition-colors duration-300 hover:text-[var(--theme-accent)]"
+        <div className="hidden md:flex items-center gap-8 uppercase tracking-[0.2em] text-sm">
+          <button
+            type="button"
+            onClick={() => scrollToSection("about")}
+            className="theme-muted hover:theme-accent transition-colors duration-300"
           >
             About
-          </a>
+          </button>
 
-          <a
-            href="#skills"
-            className="text-gray-300 transition-colors duration-300 hover:text-[var(--theme-accent)]"
+          <button
+            type="button"
+            onClick={() => scrollToSection("skills")}
+            className="theme-muted hover:theme-accent transition-colors duration-300"
           >
             Skills
-          </a>
+          </button>
 
-          <a
-            href="#projects"
-            className="text-gray-300 transition-colors duration-300 hover:text-[var(--theme-accent)]"
+          <button
+            type="button"
+            onClick={() => scrollToSection("projects")}
+            className="theme-muted hover:theme-accent transition-colors duration-300"
           >
             Projects
-          </a>
+          </button>
 
-          <a
-            href="#contact"
-            className="text-gray-300 transition-colors duration-300 hover:text-[var(--theme-accent)]"
+          <button
+            type="button"
+            onClick={() => scrollToSection("contact")}
+            className="theme-muted hover:theme-accent transition-colors duration-300"
           >
             Contact
-          </a>
+          </button>
         </div>
 
         {/* Social Icons */}
@@ -60,7 +109,11 @@ function Navbar() {
             aria-label="GitHub"
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.95 }}
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-gray-300 transition-all duration-300 hover:border-[var(--theme-accent)] hover:bg-[color-mix(in_srgb,var(--theme-accent)_10%,transparent)] hover:text-[var(--theme-accent)]"
+            className="flex items-center justify-center w-11 h-11 rounded-full border theme-border theme-muted transition-all duration-300 hover:theme-accent hover:theme-accent-border"
+            style={{
+              backgroundColor:
+                "color-mix(in srgb, var(--theme-text) 5%, transparent)",
+            }}
           >
             <FaGithub size={20} />
           </motion.a>
@@ -73,7 +126,11 @@ function Navbar() {
             aria-label="Discord"
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.95 }}
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-gray-300 transition-all duration-300 hover:border-[var(--theme-accent)] hover:bg-[color-mix(in_srgb,var(--theme-accent)_10%,transparent)] hover:text-[var(--theme-accent)]"
+            className="flex items-center justify-center w-11 h-11 rounded-full border theme-border theme-muted transition-all duration-300 hover:theme-accent hover:theme-accent-border"
+            style={{
+              backgroundColor:
+                "color-mix(in srgb, var(--theme-text) 5%, transparent)",
+            }}
           >
             <FaDiscord size={20} />
           </motion.a>
@@ -86,7 +143,11 @@ function Navbar() {
             aria-label="YouTube"
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.95 }}
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-gray-300 transition-all duration-300 hover:border-red-500 hover:bg-red-500/10 hover:text-red-500"
+            className="flex items-center justify-center w-11 h-11 rounded-full border theme-border theme-muted transition-all duration-300 hover:text-red-500 hover:border-red-500"
+            style={{
+              backgroundColor:
+                "color-mix(in srgb, var(--theme-text) 5%, transparent)",
+            }}
           >
             <FaYoutube size={20} />
           </motion.a>
