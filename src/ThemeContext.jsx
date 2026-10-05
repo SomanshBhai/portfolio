@@ -3,6 +3,10 @@ import { createContext, useContext, useEffect, useState } from "react";
 const ThemeContext = createContext();
 
 const themes = {
+  // =========================
+  // DARK THEMES
+  // =========================
+
   green: {
     name: "Matrix Green",
     accent: "#4ade80",
@@ -212,7 +216,22 @@ const themes = {
     border: "#ffffff",
   },
 
-  light: {
+  // =========================
+  // LIGHT THEMES
+  // =========================
+
+  white: {
+    name: "Pure White",
+    accent: "#111827",
+    accentStrong: "#000000",
+    background: "#ffffff",
+    surface: "#f8fafc",
+    text: "#0f172a",
+    muted: "#64748b",
+    border: "#111827",
+  },
+
+  minimal: {
     name: "Minimal Light",
     accent: "#16a34a",
     accentStrong: "#15803d",
@@ -221,6 +240,94 @@ const themes = {
     text: "#0f172a",
     muted: "#64748b",
     border: "#16a34a",
+  },
+
+  arcticLight: {
+    name: "Arctic Light",
+    accent: "#0284c7",
+    accentStrong: "#0369a1",
+    background: "#f0f9ff",
+    surface: "#ffffff",
+    text: "#0c4a6e",
+    muted: "#64748b",
+    border: "#0284c7",
+  },
+
+  softGray: {
+    name: "Soft Gray",
+    accent: "#475569",
+    accentStrong: "#334155",
+    background: "#f1f5f9",
+    surface: "#ffffff",
+    text: "#0f172a",
+    muted: "#64748b",
+    border: "#475569",
+  },
+
+  paper: {
+    name: "Paper",
+    accent: "#92400e",
+    accentStrong: "#78350f",
+    background: "#faf7f0",
+    surface: "#fffdf8",
+    text: "#292524",
+    muted: "#78716c",
+    border: "#92400e",
+  },
+
+  mintLight: {
+    name: "Mint Light",
+    accent: "#059669",
+    accentStrong: "#047857",
+    background: "#ecfdf5",
+    surface: "#ffffff",
+    text: "#064e3b",
+    muted: "#64748b",
+    border: "#059669",
+  },
+
+  skyLight: {
+    name: "Sky Light",
+    accent: "#2563eb",
+    accentStrong: "#1d4ed8",
+    background: "#eff6ff",
+    surface: "#ffffff",
+    text: "#172554",
+    muted: "#64748b",
+    border: "#2563eb",
+  },
+
+  lavenderLight: {
+    name: "Lavender Light",
+    accent: "#7c3aed",
+    accentStrong: "#6d28d9",
+    background: "#f5f3ff",
+    surface: "#ffffff",
+    text: "#2e1065",
+    muted: "#6b7280",
+    border: "#7c3aed",
+  },
+
+  roseLight: {
+    name: "Rose Light",
+    accent: "#e11d48",
+    accentStrong: "#be123c",
+    background: "#fff1f2",
+    surface: "#ffffff",
+    text: "#4c0519",
+    muted: "#6b7280",
+    border: "#e11d48",
+  },
+
+  monochrome: {
+    name: "Monochrome",
+    accent: "#18181b",
+    accentStrong: "#000000",
+    background: "#f4f4f5",
+    surface: "#ffffff",
+    text: "#18181b",
+    muted: "#71717a",
+    border: "#18181b",
   },
 };
 
