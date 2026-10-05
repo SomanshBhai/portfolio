@@ -5,25 +5,25 @@ const timeline = [
     year: "2025",
     title: "Started Programming",
     description:
-      "Started learning Python and discovered how much I enjoyed building things with code.",
+      "Began learning Python and explored the fundamentals of programming.",
   },
   {
     year: "2026",
-    title: "Explored Web Development",
+    title: "Web Development Journey",
     description:
-      "Learned HTML, CSS, JavaScript and React while building websites and experimenting with modern UI.",
-  },
-  {
-    year: "2026",
-    title: "Started Building More",
-    description:
-      "Worked on projects involving websites, Discord bots, automation and other things I was curious about.",
+      "Started learning HTML, CSS, JavaScript, React, and modern UI design.",
   },
   {
     year: "Now",
-    title: "JEE + Building",
+    title: "Building Projects",
     description:
-      "My main focus is JEE while continuing to code, build projects and improve my skills whenever I can.",
+      "Creating responsive websites, improving my frontend skills, and learning every day.",
+  },
+  {
+    year: "Goal",
+    title: "Future Software Engineer",
+    description:
+      "Continue learning full-stack development and build impactful software.",
   },
 ];
 
@@ -39,55 +39,48 @@ function Education() {
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        <p className="uppercase tracking-[0.4em] text-green-400 text-center mb-4">
+        <p className="uppercase tracking-[0.4em] theme-accent text-center mb-4">
           My Journey
         </p>
 
-        <h2 className="text-5xl md:text-7xl font-black text-center mb-20">
-          JOURNEY
+        <h2 className="text-5xl md:text-7xl font-black text-center mb-20 theme-text">
+          EDUCATION
         </h2>
 
         <div className="grid lg:grid-cols-2 gap-16">
-          {/* Current Stage */}
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-10">
-            <h3 className="text-3xl font-black mb-8">
-              Current Stage
+          {/* Education Card */}
+          <div className="rounded-3xl border theme-border bg-[var(--theme-surface)] backdrop-blur-xl p-10">
+            <h3 className="text-3xl font-black mb-8 theme-text">
+              🎓 Education
             </h3>
 
-            <div className="space-y-5 text-gray-300 leading-8">
+            <div className="space-y-5 theme-text leading-8">
               <p>
-                <span className="text-green-400 font-semibold">
+                <span className="theme-accent font-semibold">
                   Class:
                 </span>{" "}
-                Class 9
+                Class 9 Student
               </p>
 
               <p>
-                <span className="text-green-400 font-semibold">
+                <span className="theme-accent font-semibold">
                   School:
                 </span>{" "}
-                T.A.A.C.
+                Kendriya Vidyalaya
               </p>
 
               <p>
-                <span className="text-green-400 font-semibold">
-                  Main Focus:
+                <span className="theme-accent font-semibold">
+                  Focus:
                 </span>{" "}
-                JEE Preparation
+                Web Development, Python & UI Design
               </p>
 
               <p>
-                <span className="text-green-400 font-semibold">
-                  Building:
+                <span className="theme-accent font-semibold">
+                  Goal:
                 </span>{" "}
-                Websites, Discord Bots & Personal Projects
-              </p>
-
-              <p>
-                <span className="text-green-400 font-semibold">
-                  Mindset:
-                </span>{" "}
-                Learn, build, improve, repeat.
+                Become a Software Engineer
               </p>
             </div>
           </div>
@@ -96,21 +89,21 @@ function Education() {
           <div className="space-y-8">
             {timeline.map((item, index) => (
               <motion.div
-                key={`${item.year}-${item.title}`}
-                whileHover={{ x: 8 }}
-                className="border-l-2 border-green-500 pl-6 relative"
+                key={index}
+                whileHover={{ x: 10 }}
+                className="border-l-2 theme-accent-border pl-6 relative"
               >
-                <div className="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-green-500"></div>
+                <div className="absolute -left-[9px] top-1 w-4 h-4 rounded-full theme-accent-bg"></div>
 
-                <p className="text-green-400 font-bold">
+                <p className="theme-accent font-bold">
                   {item.year}
                 </p>
 
-                <h3 className="text-2xl font-bold mt-2">
+                <h3 className="text-2xl font-bold mt-2 theme-text">
                   {item.title}
                 </h3>
 
-                <p className="text-gray-400 mt-3 leading-7">
+                <p className="theme-muted mt-3 leading-7">
                   {item.description}
                 </p>
               </motion.div>
