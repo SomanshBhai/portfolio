@@ -2,29 +2,40 @@ import { motion } from "framer-motion";
 
 function Background() {
   return (
-    <div className="fixed inset-0 -z-10 overflow-hidden bg-black">
+    <div
+      className="fixed inset-0 -z-10 overflow-hidden"
+      style={{
+        backgroundColor: "var(--theme-background)",
+      }}
+    >
       <motion.div
         animate={{
-          opacity: [0.12, 0.16, 0.12],
+          scale: [1, 1.2, 1],
+          opacity: [0.15, 0.25, 0.15],
         }}
         transition={{
-          duration: 12,
+          duration: 8,
           repeat: Infinity,
-          ease: "easeInOut",
         }}
-        className="absolute -top-24 -left-24 h-[360px] w-[360px] rounded-full bg-green-500 blur-[100px]"
+        className="absolute top-0 left-0 h-[500px] w-[500px] rounded-full blur-[180px]"
+        style={{
+          backgroundColor: "var(--theme-accent)",
+        }}
       />
 
       <motion.div
         animate={{
-          opacity: [0.09, 0.13, 0.09],
+          scale: [1.1, 1, 1.1],
+          opacity: [0.12, 0.22, 0.12],
         }}
         transition={{
-          duration: 14,
+          duration: 10,
           repeat: Infinity,
-          ease: "easeInOut",
         }}
-        className="absolute -bottom-24 -right-24 h-[320px] w-[320px] rounded-full bg-green-500 blur-[100px]"
+        className="absolute bottom-0 right-0 h-[450px] w-[450px] rounded-full blur-[180px]"
+        style={{
+          backgroundColor: "var(--theme-accent)",
+        }}
       />
     </div>
   );
