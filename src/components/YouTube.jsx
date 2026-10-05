@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+
 import {
   FaYoutube,
   FaPlay,
@@ -19,23 +20,34 @@ function YouTube() {
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        <p className="uppercase tracking-[0.35em] text-green-400 text-center mb-4">
+        <p
+          className="uppercase tracking-[0.35em] text-center mb-4"
+          style={{ color: "var(--theme-accent)" }}
+        >
           Content Creator
         </p>
 
-        <h2 className="text-5xl md:text-7xl font-black text-center mb-20">
+        <h2
+          className="text-5xl md:text-7xl font-black text-center mb-20"
+          style={{ color: "var(--theme-text)" }}
+        >
           YOUTUBE
         </h2>
 
-        <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-[#101010] via-[#161616] to-[#0c0c0c] p-10 md:p-14 shadow-[0_0_40px_rgba(255,0,0,.12)]">
-
+        <div
+          className="rounded-3xl border p-10 md:p-14 transition-all duration-300"
+          style={{
+            borderColor: "var(--theme-border)",
+            backgroundColor: "var(--theme-surface)",
+            boxShadow:
+              "0 0 40px color-mix(in srgb, var(--theme-accent) 12%, transparent)",
+          }}
+        >
           <div className="grid lg:grid-cols-2 gap-14 items-center">
 
             {/* Left Side */}
             <div>
-
               <div className="flex items-center gap-6 mb-8">
-
                 <img
                   src={youtubeLogo}
                   alt="Somansh Edits"
@@ -43,18 +55,26 @@ function YouTube() {
                 />
 
                 <div>
-                  <h3 className="text-4xl font-black">
+                  <h3
+                    className="text-4xl font-black"
+                    style={{ color: "var(--theme-text)" }}
+                  >
                     Somansh Edits
                   </h3>
 
-                  <p className="text-gray-400 mt-2 text-lg">
+                  <p
+                    className="mt-2 text-lg"
+                    style={{ color: "var(--theme-muted)" }}
+                  >
                     @SomanshEdits2013
                   </p>
                 </div>
-
               </div>
 
-              <p className="text-gray-400 text-lg leading-9 mb-10">
+              <p
+                className="text-lg leading-9 mb-10"
+                style={{ color: "var(--theme-muted)" }}
+              >
                 I create funny, relatable, and POV Shorts that entertain,
                 connect with people, and bring everyday moments to life
                 through creative editing and storytelling.
@@ -69,7 +89,6 @@ function YouTube() {
                 <FaYoutube size={22} />
                 Visit My Channel
               </a>
-
             </div>
 
             {/* Right Side */}
@@ -77,15 +96,37 @@ function YouTube() {
 
               <motion.div
                 whileHover={{ y: -8 }}
-                className="rounded-2xl bg-white/5 border border-white/10 p-8 text-center"
+                className="rounded-2xl p-8 text-center border transition-all duration-300"
+                style={{
+                  backgroundColor:
+                    "color-mix(in srgb, var(--theme-background) 65%, transparent)",
+                  borderColor: "var(--theme-border)",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor =
+                    "var(--theme-accent)";
+                  e.currentTarget.style.boxShadow =
+                    "0 0 25px color-mix(in srgb, var(--theme-accent) 20%, transparent)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor =
+                    "var(--theme-border)";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
               >
                 <FaPlay className="text-red-500 text-5xl mx-auto mb-5" />
 
-                <h3 className="text-2xl font-black">
+                <h3
+                  className="text-2xl font-black"
+                  style={{ color: "var(--theme-text)" }}
+                >
                   Content
                 </h3>
 
-                <p className="text-gray-400 mt-3">
+                <p
+                  className="mt-3"
+                  style={{ color: "var(--theme-muted)" }}
+                >
                   Funny
                   <br />
                   Relatable
@@ -96,15 +137,40 @@ function YouTube() {
 
               <motion.div
                 whileHover={{ y: -8 }}
-                className="rounded-2xl bg-white/5 border border-white/10 p-8 text-center"
+                className="rounded-2xl p-8 text-center border transition-all duration-300"
+                style={{
+                  backgroundColor:
+                    "color-mix(in srgb, var(--theme-background) 65%, transparent)",
+                  borderColor: "var(--theme-border)",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor =
+                    "var(--theme-accent)";
+                  e.currentTarget.style.boxShadow =
+                    "0 0 25px color-mix(in srgb, var(--theme-accent) 20%, transparent)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor =
+                    "var(--theme-border)";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
               >
-                <FaUserFriends className="text-green-400 text-5xl mx-auto mb-5" />
+                <FaUserFriends
+                  className="text-5xl mx-auto mb-5"
+                  style={{ color: "var(--theme-accent)" }}
+                />
 
-                <h3 className="text-2xl font-black">
+                <h3
+                  className="text-2xl font-black"
+                  style={{ color: "var(--theme-text)" }}
+                >
                   Community
                 </h3>
 
-                <p className="text-gray-400 mt-3">
+                <p
+                  className="mt-3"
+                  style={{ color: "var(--theme-muted)" }}
+                >
                   Growing every day
                   <br />
                   One Short
@@ -114,11 +180,8 @@ function YouTube() {
               </motion.div>
 
             </div>
-
           </div>
-
         </div>
-
       </motion.div>
     </section>
   );
