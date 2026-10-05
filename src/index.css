@@ -6,39 +6,115 @@ html {
 
 :root {
   --theme-accent: #4ade80;
+  --theme-accent-strong: #22c55e;
+  --theme-background: #050505;
+  --theme-surface: #0a0a0a;
+  --theme-text: #ffffff;
+  --theme-muted: #9ca3af;
+  --theme-border: #4ade80;
 }
 
 body {
-  background: #050505;
-  color: white;
+  background-color: var(--theme-background);
+  color: var(--theme-text);
   margin: 0;
   font-family: Inter, sans-serif;
+
   transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
+    background-color 0.35s ease,
+    color 0.35s ease;
 }
 
-::selection {
-  background: var(--theme-accent);
-  color: black;
-}
+/* Theme utility classes */
 
 .theme-accent {
   color: var(--theme-accent);
+}
+
+.theme-accent-strong {
+  color: var(--theme-accent-strong);
 }
 
 .theme-accent-bg {
   background-color: var(--theme-accent);
 }
 
+.theme-accent-strong-bg {
+  background-color: var(--theme-accent-strong);
+}
+
+.theme-surface {
+  background-color: var(--theme-surface);
+}
+
+.theme-text {
+  color: var(--theme-text);
+}
+
+.theme-muted {
+  color: var(--theme-muted);
+}
+
 .theme-accent-border {
-  border-color: var(--theme-accent);
+  border-color: var(--theme-border);
+}
+
+.theme-border {
+  border-color: var(--theme-border);
 }
 
 .theme-accent-glow {
-  box-shadow: 0 0 30px color-mix(
-    in srgb,
-    var(--theme-accent) 20%,
-    transparent
-  );
+  box-shadow:
+    0 0 30px color-mix(
+      in srgb,
+      var(--theme-accent) 20%,
+      transparent
+    );
+}
+
+.theme-accent-glow-strong {
+  box-shadow:
+    0 0 45px color-mix(
+      in srgb,
+      var(--theme-accent) 30%,
+      transparent
+    );
+}
+
+/* Selection */
+
+::selection {
+  background: var(--theme-accent);
+  color: var(--theme-background);
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--theme-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--theme-accent);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--theme-accent-strong);
+}
+
+/* Smooth theme transitions */
+
+* {
+  transition-property:
+    background-color,
+    border-color,
+    color,
+    box-shadow;
+  transition-duration: 0.25s;
+  transition-timing-function: ease;
 }
