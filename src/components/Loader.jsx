@@ -10,29 +10,25 @@ function Loader() {
       }}
     >
       <div className="text-center">
-        {/* Logo */}
-
         <motion.div
-          initial={{ scale: 0.8, opacity: 0 }}
+          initial={{ scale: 0.7, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.6 }}
           className="text-6xl font-black"
           style={{
             color: "var(--theme-accent)",
             textShadow:
-              "0 0 30px color-mix(in srgb, var(--theme-accent) 35%, transparent)",
+              "0 0 30px color-mix(in srgb, var(--theme-accent) 45%, transparent)",
           }}
         >
           S
         </motion.div>
 
-        {/* Name */}
-
         <motion.h1
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
-          className="text-3xl font-bold mt-6"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.25, duration: 0.5 }}
+          className="mt-6 text-3xl font-black"
           style={{
             color: "var(--theme-text)",
           }}
@@ -40,12 +36,10 @@ function Loader() {
           Somansh Portfolio
         </motion.h1>
 
-        {/* Status */}
-
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
+          transition={{ delay: 0.45 }}
           className="mt-3"
           style={{
             color: "var(--theme-muted)",
@@ -54,10 +48,8 @@ function Loader() {
           Initializing Portfolio...
         </motion.p>
 
-        {/* Progress Bar */}
-
         <div
-          className="w-72 h-2 rounded-full overflow-hidden mt-10"
+          className="mt-10 h-2 w-72 overflow-hidden rounded-full"
           style={{
             backgroundColor:
               "color-mix(in srgb, var(--theme-text) 10%, transparent)",
@@ -66,12 +58,15 @@ function Loader() {
           <motion.div
             initial={{ width: 0 }}
             animate={{ width: "100%" }}
-            transition={{ duration: 1.7, ease: "easeInOut" }}
-            className="h-full"
+            transition={{
+              duration: 1.7,
+              ease: "easeInOut",
+            }}
+            className="h-full rounded-full"
             style={{
               backgroundColor: "var(--theme-accent)",
               boxShadow:
-                "0 0 18px color-mix(in srgb, var(--theme-accent) 45%, transparent)",
+                "0 0 20px color-mix(in srgb, var(--theme-accent) 60%, transparent)",
             }}
           />
         </div>
