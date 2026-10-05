@@ -331,13 +331,66 @@ const themes = {
   },
 };
 
+// Apply the saved theme immediately.
+// This runs before the React provider renders.
+function applyInitialTheme() {
+  const savedTheme =
+    localStorage.getItem("portfolio-theme") || "green";
+
+  const selectedTheme = themes[savedTheme] || themes.green;
+
+  const root = document.documentElement;
+
+  root.dataset.theme = savedTheme;
+
+  root.style.setProperty(
+    "--theme-accent",
+    selectedTheme.accent
+  );
+
+  root.style.setProperty(
+    "--theme-accent-strong",
+    selectedTheme.accentStrong
+  );
+
+  root.style.setProperty(
+    "--theme-background",
+    selectedTheme.background
+  );
+
+  root.style.setProperty(
+    "--theme-surface",
+    selectedTheme.surface
+  );
+
+  root.style.setProperty(
+    "--theme-text",
+    selectedTheme.text
+  );
+
+  root.style.setProperty(
+    "--theme-muted",
+    selectedTheme.muted
+  );
+
+  root.style.setProperty(
+    "--theme-border",
+    selectedTheme.border
+  );
+}
+
+applyInitialTheme();
+
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(() => {
-    return localStorage.getItem("portfolio-theme") || "green";
+    return (
+      localStorage.getItem("portfolio-theme") || "green"
+    );
   });
 
   useEffect(() => {
-    const selectedTheme = themes[theme] || themes.green;
+    const selectedTheme =
+      themes[theme] || themes.green;
 
     localStorage.setItem("portfolio-theme", theme);
 
@@ -345,20 +398,50 @@ export function ThemeProvider({ children }) {
 
     root.dataset.theme = theme;
 
-    root.style.setProperty("--theme-accent", selectedTheme.accent);
+    root.style.setProperty(
+      "--theme-accent",
+      selectedTheme.accent
+    );
+
     root.style.setProperty(
       "--theme-accent-strong",
       selectedTheme.accentStrong
     );
-    root.style.setProperty("--theme-background", selectedTheme.background);
-    root.style.setProperty("--theme-surface", selectedTheme.surface);
-    root.style.setProperty("--theme-text", selectedTheme.text);
-    root.style.setProperty("--theme-muted", selectedTheme.muted);
-    root.style.setProperty("--theme-border", selectedTheme.border);
+
+    root.style.setProperty(
+      "--theme-background",
+      selectedTheme.background
+    );
+
+    root.style.setProperty(
+      "--theme-surface",
+      selectedTheme.surface
+    );
+
+    root.style.setProperty(
+      "--theme-text",
+      selectedTheme.text
+    );
+
+    root.style.setProperty(
+      "--theme-muted",
+      selectedTheme.muted
+    );
+
+    root.style.setProperty(
+      "--theme-border",
+      selectedTheme.border
+    );
   }, [theme]);
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme, themes }}>
+    <ThemeContext.Provider
+      value={{
+        theme,
+        setTheme,
+        themes,
+      }}
+    >
       {children}
     </ThemeContext.Provider>
   );
