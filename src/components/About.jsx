@@ -14,62 +14,75 @@ function About() {
         className="grid lg:grid-cols-2 gap-20 items-start"
       >
         {/* Left Side */}
+
         <div>
-          <p className="uppercase tracking-[0.35em] text-green-400 mb-6">
+          <p
+            className="uppercase tracking-[0.35em] mb-6"
+            style={{
+              color: "var(--theme-accent)",
+            }}
+          >
             About Me
           </p>
 
           <h2 className="text-5xl md:text-7xl font-black leading-tight">
-            LEARNING.
+            I BUILD
             <br />
-            BUILDING.
+            MODERN
             <br />
-            IMPROVING.
+            EXPERIENCES.
           </h2>
         </div>
 
         {/* Right Side */}
+
         <div className="space-y-8 text-gray-400 text-lg leading-9">
           <p>
             I'm{" "}
             <span className="text-white font-semibold">
               Somansh Maurya
             </span>
-            , a Class 9 student at{" "}
-            <span className="text-green-400 font-semibold">
-              T.A.A.C.
-            </span>{" "}
-            and currently focused on JEE while continuing to build things
-            I'm curious about.
+            , a Class 9 student passionate about web development,
+            creative design, and technology.
           </p>
 
           <p>
-            I enjoy working with React, JavaScript and Python, building
-            websites and Discord bots, and experimenting with different
-            projects. I like learning by actually making things and
-            figuring out how they work.
+            I enjoy building modern websites with React, Tailwind CSS,
+            and AI-assisted workflows. Every project helps me learn
+            something new and improve my skills.
           </p>
 
           <p>
-            Outside of coding, I'm into Minecraft, YouTube and creative
-            projects. Right now, my main focus is balancing JEE preparation
-            with coding, building better projects, and improving a little
-            every day.
+            Outside of coding, I enjoy Minecraft, experimenting with
+            design ideas, and exploring new technologies that make the
+            web more interactive and enjoyable.
           </p>
 
           <div className="grid grid-cols-2 gap-8 pt-8">
             <div>
-              <h3 className="text-4xl font-black text-green-400">
-                JEE
+              <h3
+                className="text-4xl font-black"
+                style={{
+                  color: "var(--theme-accent)",
+                }}
+              >
+                10+
               </h3>
-              <p>Current Focus</p>
+
+              <p>Projects Built</p>
             </div>
 
             <div>
-              <h3 className="text-4xl font-black text-green-400">
-                ∞
+              <h3
+                className="text-4xl font-black"
+                style={{
+                  color: "var(--theme-accent)",
+                }}
+              >
+                2026
               </h3>
-              <p>Still Learning</p>
+
+              <p>Learning Journey</p>
             </div>
           </div>
         </div>
