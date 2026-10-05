@@ -30,6 +30,7 @@ import ThemeSwitcher from "./components/ThemeSwitcher";
 function Home() {
   return (
     <>
+      <ThemeSwitcher />
       <ScrollProgress />
       <Cursor />
       <Background />
