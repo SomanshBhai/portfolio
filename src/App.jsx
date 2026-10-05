@@ -22,7 +22,7 @@ import Contact from "./components/Contact";
 import Tools from "./components/Tools";
 
 import SmartCalculator from "./pages/projects/SmartCalculator";
-import Portfolio from "./pages/projects/Portfolio";
+import Portfolio from "./pages/projects/PortfolioProject";
 
 function Home() {
   return (
