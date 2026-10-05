@@ -11,8 +11,11 @@ function ScrollProgress() {
 
   return (
     <motion.div
-      style={{ scaleX }}
-      className="fixed top-0 left-0 right-0 h-1 bg-green-400 origin-left z-[100]"
+      style={{
+        scaleX,
+        backgroundColor: "var(--theme-accent)",
+      }}
+      className="fixed top-0 left-0 right-0 h-1 origin-left z-[100]"
     />
   );
 }
