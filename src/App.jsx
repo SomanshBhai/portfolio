@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Loader from "./components/Loader";
-
 import YouTube from "./components/YouTube";
 import Achievements from "./components/Achievements";
 import GithubStats from "./components/GithubStats";
@@ -20,7 +19,6 @@ import Hero from "./components/Hero";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Tools from "./components/Tools";
-
 import SmartCalculator from "./pages/projects/SmartCalculator";
 import Portfolio from "./pages/projects/PortfolioProject";
 
@@ -33,7 +31,6 @@ function Home() {
       <ThemeSwitcher />
       <ScrollProgress />
       <Cursor />
-      <Background />
       <Navbar />
       <Hero />
       <About />
@@ -81,26 +78,29 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  if (loading) {
-    return <Loader />;
-  }
-
   return (
     <ThemeProvider>
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
+        {/* Keep the background mounted from the first render */}
+        <Background />
 
-          <Route
-            path="/projects/smart-calculator"
-            element={<SmartCalculator />}
-          />
+        {loading ? (
+          <Loader />
+        ) : (
+          <Routes>
+            <Route path="/" element={<Home />} />
 
-          <Route
-            path="/projects/portfolio"
-            element={<Portfolio />}
-          />
-        </Routes>
+            <Route
+              path="/projects/smart-calculator"
+              element={<SmartCalculator />}
+            />
+
+            <Route
+              path="/projects/portfolio"
+              element={<Portfolio />}
+            />
+          </Routes>
+        )}
       </BrowserRouter>
     </ThemeProvider>
   );
