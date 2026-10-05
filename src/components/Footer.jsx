@@ -5,9 +5,16 @@ function Footer() {
     <motion.footer
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      className="py-8 text-center border-t border-white/10"
+      className="py-8 text-center border-t"
+      style={{
+        borderColor: "var(--theme-border)",
+      }}
     >
-      <p className="text-gray-400">
+      <p
+        style={{
+          color: "var(--theme-muted)",
+        }}
+      >
         © {new Date().getFullYear()} Somansh. All rights reserved.
       </p>
     </motion.footer>
