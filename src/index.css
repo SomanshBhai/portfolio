@@ -106,15 +106,3 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--theme-accent-strong);
 }
-
-/* Smooth theme transitions */
-
-* {
-  transition-property:
-    background-color,
-    border-color,
-    color,
-    box-shadow;
-  transition-duration: 0.25s;
-  transition-timing-function: ease;
-}
