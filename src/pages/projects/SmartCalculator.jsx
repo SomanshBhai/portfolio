@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
@@ -62,6 +63,209 @@ function Section({ number, title, children }) {
 }
 
 function SmartCalculator() {
+  const [display, setDisplay] = useState("0");
+  const [previousValue, setPreviousValue] = useState(null);
+  const [operator, setOperator] = useState(null);
+  const [waitingForOperand, setWaitingForOperand] = useState(false);
+
+  const inputNumber = (number) => {
+    if (waitingForOperand) {
+      setDisplay(String(number));
+      setWaitingForOperand(false);
+      return;
+    }
+
+    if (display === "0") {
+      setDisplay(String(number));
+    } else {
+      setDisplay(display + number);
+    }
+  };
+
+  const inputDecimal = () => {
+    if (waitingForOperand) {
+      setDisplay("0.");
+      setWaitingForOperand(false);
+      return;
+    }
+
+    if (!display.includes(".")) {
+      setDisplay(display + ".");
+    }
+  };
+
+  const calculate = (first, second, selectedOperator) => {
+    const a = Number(first);
+    const b = Number(second);
+
+    if (selectedOperator === "+") return a + b;
+    if (selectedOperator === "-") return a - b;
+    if (selectedOperator === "×") return a * b;
+
+    if (selectedOperator === "÷") {
+      if (b === 0) return "Error";
+      return a / b;
+    }
+
+    return b;
+  };
+
+  const chooseOperator = (nextOperator) => {
+    const inputValue = Number(display);
+
+    if (operator && waitingForOperand) {
+      setOperator(nextOperator);
+      return;
+    }
+
+    if (previousValue === null) {
+      setPreviousValue(inputValue);
+    } else if (operator) {
+      const result = calculate(previousValue, inputValue, operator);
+
+      if (result === "Error") {
+        setDisplay("Error");
+        setPreviousValue(null);
+        setOperator(null);
+        setWaitingForOperand(true);
+        return;
+      }
+
+      setDisplay(String(result));
+      setPreviousValue(result);
+    }
+
+    setWaitingForOperand(true);
+    setOperator(nextOperator);
+  };
+
+  const performCalculation = () => {
+    if (operator === null || previousValue === null) {
+      return;
+    }
+
+    const inputValue = Number(display);
+    const result = calculate(previousValue, inputValue, operator);
+
+    setDisplay(String(result));
+    setPreviousValue(null);
+    setOperator(null);
+    setWaitingForOperand(true);
+  };
+
+  const clearCalculator = () => {
+    setDisplay("0");
+    setPreviousValue(null);
+    setOperator(null);
+    setWaitingForOperand(false);
+  };
+
+  const backspace = () => {
+    if (waitingForOperand || display === "Error") {
+      return;
+    }
+
+    if (display.length <= 1) {
+      setDisplay("0");
+    } else {
+      setDisplay(display.slice(0, -1));
+    }
+  };
+
+  const buttons = [
+    {
+      label: "C",
+      action: clearCalculator,
+      className:
+        "border-red-400/20 bg-red-400/5 text-red-300 hover:bg-red-400/10",
+    },
+    {
+      label: "⌫",
+      action: backspace,
+      className:
+        "border-white/10 bg-white/[0.04] text-white/70 hover:bg-white/[0.08]",
+    },
+    {
+      label: "÷",
+      action: () => chooseOperator("÷"),
+      className:
+        "border-green-400/20 bg-green-400/10 text-green-400 hover:bg-green-400/20",
+    },
+    {
+      label: "×",
+      action: () => chooseOperator("×"),
+      className:
+        "border-green-400/20 bg-green-400/10 text-green-400 hover:bg-green-400/20",
+    },
+
+    {
+      label: "7",
+      action: () => inputNumber(7),
+    },
+    {
+      label: "8",
+      action: () => inputNumber(8),
+    },
+    {
+      label: "9",
+      action: () => inputNumber(9),
+    },
+    {
+      label: "-",
+      action: () => chooseOperator("-"),
+      className:
+        "border-green-400/20 bg-green-400/10 text-green-400 hover:bg-green-400/20",
+    },
+
+    {
+      label: "4",
+      action: () => inputNumber(4),
+    },
+    {
+      label: "5",
+      action: () => inputNumber(5),
+    },
+    {
+      label: "6",
+      action: () => inputNumber(6),
+    },
+    {
+      label: "+",
+      action: () => chooseOperator("+"),
+      className:
+        "border-green-400/20 bg-green-400/10 text-green-400 hover:bg-green-400/20",
+    },
+
+    {
+      label: "1",
+      action: () => inputNumber(1),
+    },
+    {
+      label: "2",
+      action: () => inputNumber(2),
+    },
+    {
+      label: "3",
+      action: () => inputNumber(3),
+    },
+    {
+      label: "=",
+      action: performCalculation,
+      className:
+        "row-span-2 border-green-400/30 bg-green-400 text-black hover:bg-green-300",
+    },
+
+    {
+      label: "0",
+      action: () => inputNumber(0),
+      className: "col-span-2",
+    },
+    {
+      label: ".",
+      action: inputDecimal,
+    },
+  ];
+
   return (
     <main className="min-h-screen bg-[#050505] text-white">
       {/* Background */}
@@ -148,6 +352,63 @@ function SmartCalculator() {
             </Link>
           </motion.div>
         </section>
+
+        {/* Browser Calculator */}
+        <motion.section
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.7 }}
+          className="mb-24"
+        >
+          <div className="mb-8 flex items-center gap-4">
+            <span className="font-mono text-sm text-green-400">
+              LIVE
+            </span>
+
+            <div className="h-px flex-1 bg-white/10" />
+
+            <h2 className="text-2xl font-bold md:text-3xl">
+              Try It <span className="text-green-400">Here.</span>
+            </h2>
+          </div>
+
+          <div className="mx-auto max-w-md overflow-hidden rounded-3xl border border-green-400/20 bg-[#090909] p-5 shadow-2xl shadow-green-400/5 sm:p-7">
+            <div className="mb-5 rounded-2xl border border-white/10 bg-black/60 p-5">
+              <p className="mb-2 font-mono text-xs text-white/30">
+                browser-calculator
+              </p>
+
+              <div
+                className="overflow-hidden text-right font-mono text-4xl font-bold text-white"
+                title={display}
+              >
+                {display}
+              </div>
+            </div>
+
+            <div className="grid grid-cols-4 gap-3">
+              {buttons.map((button) => (
+                <motion.button
+                  key={button.label}
+                  type="button"
+                  onClick={button.action}
+                  whileTap={{ scale: 0.94 }}
+                  className={`min-h-14 rounded-2xl border text-lg font-bold transition ${
+                    button.className ||
+                    "border-white/10 bg-white/[0.04] text-white/80 hover:bg-white/[0.08]"
+                  }`}
+                >
+                  {button.label}
+                </motion.button>
+              ))}
+            </div>
+
+            <p className="mt-5 text-center font-mono text-xs text-white/30">
+              Runs directly in your browser • No packages required
+            </p>
+          </div>
+        </motion.section>
 
         {/* Terminal */}
         <motion.div
