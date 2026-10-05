@@ -2,23 +2,14 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 
 const commands = {
-  help: "Available commands: whoami, education, skills, about, youtube, github, goal, clear",
-
+  help: "Available commands: whoami, education, skills, youtube, github, goal, clear",
   whoami: "Somansh Maurya",
-
-  education: "Class 9 Student • T.A.A.C.",
-
+  education: "Class 9 Student • Kendriya Vidyalaya",
   skills:
-    "React • JavaScript • HTML • CSS • Python • Discord Bots • Web Development",
-
-  about:
-    "Class 9 student at T.A.A.C. focused on JEE while learning, building projects and exploring technology.",
-
-  youtube: "@SomanshEdits2013",
-
+    "React • JavaScript • HTML • CSS • Python • UI Design • AI Prompt Engineering",
+  youtube: "@SomansEdits2013",
   github: "github.com/SomanshBhai",
-
-  goal: "JEE",
+  goal: "Become a Software Engineer",
 };
 
 function Terminal() {
@@ -68,55 +59,66 @@ function Terminal() {
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        <p className="uppercase tracking-[0.4em] text-green-400 text-center mb-4">
+        <p className="uppercase tracking-[0.4em] theme-accent text-center mb-4">
           Interactive
         </p>
 
-        <h2 className="text-5xl md:text-7xl font-black text-center mb-16">
+        <h2 className="text-5xl md:text-7xl font-black text-center mb-16 theme-text">
           DEVELOPER TERMINAL
         </h2>
 
-        <div className="rounded-3xl border border-green-500/20 bg-[#0b0b0b] overflow-hidden shadow-[0_0_40px_rgba(34,197,94,.15)]">
-
+        <div
+          className="rounded-3xl border theme-accent-border overflow-hidden transition-all duration-300"
+          style={{
+            backgroundColor: "var(--theme-surface)",
+            boxShadow:
+              "0 0 40px color-mix(in srgb, var(--theme-accent) 15%, transparent)",
+          }}
+        >
           {/* Top Bar */}
-          <div className="flex items-center gap-2 px-6 py-4 border-b border-white/10 bg-[#121212]">
+          <div
+            className="flex items-center gap-2 px-6 py-4 border-b theme-border"
+            style={{
+              backgroundColor:
+                "color-mix(in srgb, var(--theme-background) 65%, var(--theme-surface))",
+            }}
+          >
+            {/* These colors intentionally remain terminal-style */}
             <div className="w-3 h-3 rounded-full bg-red-500"></div>
             <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
             <div className="w-3 h-3 rounded-full bg-green-500"></div>
 
-            <span className="ml-4 text-gray-400 text-sm">
+            <span className="ml-4 theme-muted text-sm">
               somansh-terminal
             </span>
           </div>
 
           {/* Terminal Body */}
           <div className="p-8 font-mono min-h-[400px]">
-
             {history.map((item, index) => (
               <div key={index} className="mb-6">
-                <p className="text-green-400">
+                <p className="theme-accent">
                   $ {item.command}
                 </p>
 
-                <p className="text-gray-300 mt-2">
+                <p className="theme-text mt-2 opacity-90">
                   {item.output}
                 </p>
               </div>
             ))}
 
             <form onSubmit={runCommand}>
-              <div className="flex items-center text-green-400">
+              <div className="flex items-center theme-accent">
                 <span>$</span>
 
                 <input
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  className="ml-2 bg-transparent outline-none text-white w-full"
+                  className="ml-2 bg-transparent outline-none theme-text w-full placeholder:theme-muted"
                   placeholder="type help..."
                 />
               </div>
             </form>
-
           </div>
         </div>
       </motion.div>
