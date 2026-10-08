@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import Loader from "./components/Loader";
 
@@ -36,11 +36,31 @@ import SmartCalculator from "./pages/projects/SmartCalculator";
 
 import Portfolio from "./pages/projects/PortfolioProject";
 
+import PlayerIntroduction from "./pages/projects/PlayerIntroduction";
+
+import DeveloperHub from "./pages/projects/DeveloperHub";
+
+import Login from "./pages/projects/Login";
+
+import Admin from "./pages/projects/Admin";
+
+import ProjectsManager from "./pages/projects/ProjectsManager";
+
+import ProtectedRoute from "./components/ProtectedRoute";
+
 import { ThemeProvider } from "./ThemeContext";
 
 import ThemeSwitcher from "./components/ThemeSwitcher";
 
-function Home() {
+import ScrollToTop from "./components/ScrollToTop";
+
+import AchievementsManager from "./pages/projects/achievements/AchievementsManager";
+
+import EducationManager from "./pages/projects/education/EducationManager";
+
+import YouTubeManager from "./pages/projects/youtube/YouTubeManager";
+
+function PortfolioHome() {
   return (
     <>
       <ThemeSwitcher />
@@ -111,28 +131,91 @@ function App() {
 
   return (
     <ThemeProvider>
-      <BrowserRouter>
-        {/* Keep Background mounted before Loader to prevent startup glow flash */}
-        <Background />
+      {/* Keep Background mounted before Loader to prevent startup glow flash */}
+      <Background />
 
-        {loading ? (
-          <Loader />
-        ) : (
-          <Routes>
-            <Route path="/" element={<Home />} />
+      <ScrollToTop />
 
-            <Route
-              path="/projects/smart-calculator"
-              element={<SmartCalculator />}
-            />
+      {loading ? (
+        <Loader />
+      ) : (
+        <Routes>
+          {/* Developer Hub */}
+          <Route path="/" element={<DeveloperHub />} />
 
-            <Route
-              path="/projects/portfolio"
-              element={<Portfolio />}
-            />
-          </Routes>
-        )}
-      </BrowserRouter>
+          {/* Existing Portfolio */}
+          <Route path="/portfolio" element={<PortfolioHome />} />
+
+          {/* Authentication */}
+          <Route path="/login" element={<Login />} />
+
+          {/* Admin Dashboard */}
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute>
+                <Admin />
+              </ProtectedRoute>
+            }
+          />
+
+          {/* Admin Projects */}
+          <Route
+            path="/admin/projects"
+            element={
+              <ProtectedRoute>
+                <ProjectsManager />
+              </ProtectedRoute>
+            }
+          />
+
+          {/* Admin Education */}
+          <Route
+            path="/admin/education"
+            element={
+              <ProtectedRoute>
+                <EducationManager />
+              </ProtectedRoute>
+            }
+          />
+
+          {/* Admin Achievements */}
+          <Route
+            path="/admin/achievements"
+            element={
+              <ProtectedRoute>
+                <AchievementsManager />
+              </ProtectedRoute>
+            }
+          />
+
+          {/* Admin YouTube */}
+          <Route
+            path="/admin/youtube"
+            element={
+              <ProtectedRoute>
+                <YouTubeManager />
+              </ProtectedRoute>
+            }
+          />
+
+          {/* Project Pages */}
+          <Route
+            path="/projects/smart-calculator"
+            element={<SmartCalculator />}
+          />
+
+          <Route
+            path="/projects/portfolio"
+            element={<Portfolio />}
+          />
+
+          <Route
+            path="/projects/player-introduction"
+            element={<PlayerIntroduction />}
+          />
+        </Routes>
+      )}
     </ThemeProvider>
   );
 }

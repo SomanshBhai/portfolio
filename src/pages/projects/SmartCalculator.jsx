@@ -46,13 +46,25 @@ function Section({ number, title, children }) {
       className="mb-20"
     >
       <div className="mb-8 flex items-center gap-4">
-        <span className="font-mono text-sm text-green-400">
+        <span
+          className="font-mono text-sm"
+          style={{ color: "var(--theme-accent)" }}
+        >
           {number}
         </span>
 
-        <div className="h-px flex-1 bg-white/10" />
+        <div
+          className="h-px flex-1"
+          style={{
+            backgroundColor:
+              "color-mix(in srgb, var(--theme-border) 25%, transparent)",
+          }}
+        />
 
-        <h2 className="text-2xl font-bold text-white md:text-3xl">
+        <h2
+          className="text-2xl font-bold md:text-3xl"
+          style={{ color: "var(--theme-text)" }}
+        >
           {title}
         </h2>
       </div>
@@ -176,26 +188,35 @@ function SmartCalculator() {
     {
       label: "C",
       action: clearCalculator,
-      className:
-        "border-red-400/20 bg-red-400/5 text-red-300 hover:bg-red-400/10",
+      style: {
+        borderColor:
+          "color-mix(in srgb, #f87171 25%, transparent)",
+        backgroundColor:
+          "color-mix(in srgb, #f87171 7%, transparent)",
+        color: "#fca5a5",
+      },
     },
     {
       label: "⌫",
       action: backspace,
-      className:
-        "border-white/10 bg-white/[0.04] text-white/70 hover:bg-white/[0.08]",
+      style: {
+        borderColor:
+          "color-mix(in srgb, var(--theme-border) 25%, transparent)",
+        backgroundColor:
+          "color-mix(in srgb, var(--theme-text) 4%, transparent)",
+        color:
+          "color-mix(in srgb, var(--theme-text) 70%, transparent)",
+      },
     },
     {
       label: "÷",
       action: () => chooseOperator("÷"),
-      className:
-        "border-green-400/20 bg-green-400/10 text-green-400 hover:bg-green-400/20",
+      accent: true,
     },
     {
       label: "×",
       action: () => chooseOperator("×"),
-      className:
-        "border-green-400/20 bg-green-400/10 text-green-400 hover:bg-green-400/20",
+      accent: true,
     },
 
     {
@@ -213,8 +234,7 @@ function SmartCalculator() {
     {
       label: "-",
       action: () => chooseOperator("-"),
-      className:
-        "border-green-400/20 bg-green-400/10 text-green-400 hover:bg-green-400/20",
+      accent: true,
     },
 
     {
@@ -232,8 +252,7 @@ function SmartCalculator() {
     {
       label: "+",
       action: () => chooseOperator("+"),
-      className:
-        "border-green-400/20 bg-green-400/10 text-green-400 hover:bg-green-400/20",
+      accent: true,
     },
 
     {
@@ -251,8 +270,7 @@ function SmartCalculator() {
     {
       label: "=",
       action: performCalculation,
-      className:
-        "row-span-2 border-green-400/30 bg-green-400 text-black hover:bg-green-300",
+      equal: true,
     },
 
     {
@@ -267,11 +285,30 @@ function SmartCalculator() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#050505] text-white">
+    <main
+      className="min-h-screen"
+      style={{
+        backgroundColor: "var(--theme-background)",
+        color: "var(--theme-text)",
+      }}
+    >
       {/* Background */}
       <div className="pointer-events-none fixed inset-0 -z-0 overflow-hidden">
-        <div className="absolute left-1/2 top-[-180px] h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-green-500/10 blur-[140px]" />
-        <div className="absolute bottom-[-200px] right-[-100px] h-[400px] w-[400px] rounded-full bg-green-400/5 blur-[120px]" />
+        <div
+          className="absolute left-1/2 top-[-180px] h-[500px] w-[500px] -translate-x-1/2 rounded-full blur-[140px]"
+          style={{
+            backgroundColor:
+              "color-mix(in srgb, var(--theme-accent) 10%, transparent)",
+          }}
+        />
+
+        <div
+          className="absolute bottom-[-200px] right-[-100px] h-[400px] w-[400px] rounded-full blur-[120px]"
+          style={{
+            backgroundColor:
+              "color-mix(in srgb, var(--theme-accent) 5%, transparent)",
+          }}
+        />
       </div>
 
       <div className="relative z-10 mx-auto max-w-6xl px-6 py-10 md:px-10 md:py-16">
@@ -284,7 +321,14 @@ function SmartCalculator() {
         >
           <Link
             to="/"
-            className="group inline-flex items-center gap-2 font-mono text-sm text-white/60 transition hover:text-green-400"
+            className="group inline-flex items-center gap-2 font-mono text-sm transition"
+            style={{ color: "var(--theme-muted)" }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.color = "var(--theme-accent)")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.color = "var(--theme-muted)")
+            }
           >
             <span className="transition-transform group-hover:-translate-x-1">
               ←
@@ -292,7 +336,16 @@ function SmartCalculator() {
             Back to Portfolio
           </Link>
 
-          <span className="rounded-full border border-green-400/20 bg-green-400/5 px-4 py-2 font-mono text-xs text-green-400">
+          <span
+            className="rounded-full border px-4 py-2 font-mono text-xs"
+            style={{
+              borderColor:
+                "color-mix(in srgb, var(--theme-accent) 20%, transparent)",
+              backgroundColor:
+                "color-mix(in srgb, var(--theme-accent) 5%, transparent)",
+              color: "var(--theme-accent)",
+            }}
+          >
             PYTHON PROJECT
           </span>
         </motion.div>
@@ -303,7 +356,8 @@ function SmartCalculator() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="mb-4 font-mono text-sm uppercase tracking-[0.25em] text-green-400"
+            className="mb-4 font-mono text-sm uppercase tracking-[0.25em]"
+            style={{ color: "var(--theme-accent)" }}
           >
             Personal Project
           </motion.p>
@@ -315,14 +369,18 @@ function SmartCalculator() {
             className="max-w-4xl text-5xl font-black tracking-tight md:text-7xl"
           >
             Smart
-            <span className="text-green-400"> Calculator.</span>
+            <span style={{ color: "var(--theme-accent)" }}>
+              {" "}
+              Calculator.
+            </span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-7 max-w-2xl text-base leading-8 text-white/55 md:text-lg"
+            className="mt-7 max-w-2xl text-base leading-8 md:text-lg"
+            style={{ color: "var(--theme-muted)" }}
           >
             A Python desktop calculator built while exploring GUI
             development, application logic, and the fundamentals of
@@ -339,14 +397,49 @@ function SmartCalculator() {
               href="https://github.com/SomanshBhai/smart-calculator-python"
               target="_blank"
               rel="noreferrer"
-              className="rounded-xl border border-green-400/30 bg-green-400/10 px-5 py-3 font-mono text-sm text-green-400 transition hover:bg-green-400/20"
+              className="rounded-xl border px-5 py-3 font-mono text-sm transition"
+              style={{
+                borderColor:
+                  "color-mix(in srgb, var(--theme-accent) 30%, transparent)",
+                backgroundColor:
+                  "color-mix(in srgb, var(--theme-accent) 10%, transparent)",
+                color: "var(--theme-accent)",
+              }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.backgroundColor =
+                  "color-mix(in srgb, var(--theme-accent) 20%, transparent)")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.backgroundColor =
+                  "color-mix(in srgb, var(--theme-accent) 10%, transparent)")
+              }
             >
               View on GitHub ↗
             </a>
 
             <Link
               to="/projects/portfolio"
-              className="rounded-xl border border-white/10 bg-white/[0.03] px-5 py-3 font-mono text-sm text-white/70 transition hover:border-white/20 hover:text-white"
+              className="rounded-xl border px-5 py-3 font-mono text-sm transition"
+              style={{
+                borderColor:
+                  "color-mix(in srgb, var(--theme-border) 35%, transparent)",
+                backgroundColor:
+                  "color-mix(in srgb, var(--theme-text) 3%, transparent)",
+                color:
+                  "color-mix(in srgb, var(--theme-text) 70%, transparent)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor =
+                  "var(--theme-border)";
+                e.currentTarget.style.color =
+                  "var(--theme-text)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor =
+                  "color-mix(in srgb, var(--theme-border) 35%, transparent)";
+                e.currentTarget.style.color =
+                  "color-mix(in srgb, var(--theme-text) 70%, transparent)";
+              }}
             >
               Previous Project
             </Link>
@@ -362,26 +455,62 @@ function SmartCalculator() {
           className="mb-24"
         >
           <div className="mb-8 flex items-center gap-4">
-            <span className="font-mono text-sm text-green-400">
+            <span
+              className="font-mono text-sm"
+              style={{ color: "var(--theme-accent)" }}
+            >
               LIVE
             </span>
 
-            <div className="h-px flex-1 bg-white/10" />
+            <div
+              className="h-px flex-1"
+              style={{
+                backgroundColor:
+                  "color-mix(in srgb, var(--theme-border) 25%, transparent)",
+              }}
+            />
 
             <h2 className="text-2xl font-bold md:text-3xl">
-              Try It <span className="text-green-400">Here.</span>
+              Try It{" "}
+              <span style={{ color: "var(--theme-accent)" }}>
+                Here.
+              </span>
             </h2>
           </div>
 
-          <div className="mx-auto max-w-md overflow-hidden rounded-3xl border border-green-400/20 bg-[#090909] p-5 shadow-2xl shadow-green-400/5 sm:p-7">
-            <div className="mb-5 rounded-2xl border border-white/10 bg-black/60 p-5">
-              <p className="mb-2 font-mono text-xs text-white/30">
+          <div
+            className="mx-auto max-w-md overflow-hidden rounded-3xl border p-5 shadow-2xl sm:p-7"
+            style={{
+              borderColor:
+                "color-mix(in srgb, var(--theme-accent) 20%, transparent)",
+              backgroundColor: "var(--theme-surface)",
+              boxShadow:
+                "0 0 40px color-mix(in srgb, var(--theme-accent) 5%, transparent)",
+            }}
+          >
+            <div
+              className="mb-5 rounded-2xl border p-5"
+              style={{
+                borderColor:
+                  "color-mix(in srgb, var(--theme-border) 25%, transparent)",
+                backgroundColor:
+                  "color-mix(in srgb, var(--theme-background) 75%, transparent)",
+              }}
+            >
+              <p
+                className="mb-2 font-mono text-xs"
+                style={{
+                  color:
+                    "color-mix(in srgb, var(--theme-muted) 45%, transparent)",
+                }}
+              >
                 browser-calculator
               </p>
 
               <div
-                className="overflow-hidden text-right font-mono text-4xl font-bold text-white"
+                className="overflow-hidden text-right font-mono text-4xl font-bold"
                 title={display}
+                style={{ color: "var(--theme-text)" }}
               >
                 {display}
               </div>
@@ -395,16 +524,79 @@ function SmartCalculator() {
                   onClick={button.action}
                   whileTap={{ scale: 0.94 }}
                   className={`min-h-14 rounded-2xl border text-lg font-bold transition ${
-                    button.className ||
-                    "border-white/10 bg-white/[0.04] text-white/80 hover:bg-white/[0.08]"
+                    button.className || ""
                   }`}
+                  style={{
+                    ...(button.style || {}),
+                    ...(button.accent
+                      ? {
+                          borderColor:
+                            "color-mix(in srgb, var(--theme-accent) 20%, transparent)",
+                          backgroundColor:
+                            "color-mix(in srgb, var(--theme-accent) 10%, transparent)",
+                          color: "var(--theme-accent)",
+                        }
+                      : {}),
+                    ...(button.equal
+                      ? {
+                          borderColor:
+                            "color-mix(in srgb, var(--theme-accent) 30%, transparent)",
+                          backgroundColor: "var(--theme-accent)",
+                          color: "var(--theme-background)",
+                        }
+                      : {}),
+                    ...(button.className
+                      ? {}
+                      : !button.style &&
+                        !button.accent &&
+                        !button.equal
+                      ? {
+                          borderColor:
+                            "color-mix(in srgb, var(--theme-border) 25%, transparent)",
+                          backgroundColor:
+                            "color-mix(in srgb, var(--theme-text) 4%, transparent)",
+                          color:
+                            "color-mix(in srgb, var(--theme-text) 80%, transparent)",
+                        }
+                      : {}),
+                  }}
+                  onMouseEnter={(e) => {
+                    if (button.equal) {
+                      e.currentTarget.style.backgroundColor =
+                        "var(--theme-accent-strong)";
+                    } else if (button.accent) {
+                      e.currentTarget.style.backgroundColor =
+                        "color-mix(in srgb, var(--theme-accent) 20%, transparent)";
+                    } else if (!button.style) {
+                      e.currentTarget.style.backgroundColor =
+                        "color-mix(in srgb, var(--theme-text) 8%, transparent)";
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (button.equal) {
+                      e.currentTarget.style.backgroundColor =
+                        "var(--theme-accent)";
+                    } else if (button.accent) {
+                      e.currentTarget.style.backgroundColor =
+                        "color-mix(in srgb, var(--theme-accent) 10%, transparent)";
+                    } else if (!button.style) {
+                      e.currentTarget.style.backgroundColor =
+                        "color-mix(in srgb, var(--theme-text) 4%, transparent)";
+                    }
+                  }}
                 >
                   {button.label}
                 </motion.button>
               ))}
             </div>
 
-            <p className="mt-5 text-center font-mono text-xs text-white/30">
+            <p
+              className="mt-5 text-center font-mono text-xs"
+              style={{
+                color:
+                  "color-mix(in srgb, var(--theme-muted) 45%, transparent)",
+              }}
+            >
               Runs directly in your browser • No packages required
             </p>
           </div>
@@ -415,44 +607,98 @@ function SmartCalculator() {
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="mb-24 overflow-hidden rounded-2xl border border-white/10 bg-[#090909] shadow-2xl"
+          className="mb-24 overflow-hidden rounded-2xl border shadow-2xl"
+          style={{
+            borderColor:
+              "color-mix(in srgb, var(--theme-border) 25%, transparent)",
+            backgroundColor: "var(--theme-surface)",
+          }}
         >
-          <div className="flex items-center gap-2 border-b border-white/10 px-5 py-4">
-            <span className="h-3 w-3 rounded-full bg-white/20" />
-            <span className="h-3 w-3 rounded-full bg-white/20" />
-            <span className="h-3 w-3 rounded-full bg-white/20" />
+          <div
+            className="flex items-center gap-2 border-b px-5 py-4"
+            style={{
+              borderColor:
+                "color-mix(in srgb, var(--theme-border) 25%, transparent)",
+            }}
+          >
+            <span
+              className="h-3 w-3 rounded-full"
+              style={{
+                backgroundColor:
+                  "color-mix(in srgb, var(--theme-text) 20%, transparent)",
+              }}
+            />
+            <span
+              className="h-3 w-3 rounded-full"
+              style={{
+                backgroundColor:
+                  "color-mix(in srgb, var(--theme-text) 20%, transparent)",
+              }}
+            />
+            <span
+              className="h-3 w-3 rounded-full"
+              style={{
+                backgroundColor:
+                  "color-mix(in srgb, var(--theme-text) 20%, transparent)",
+              }}
+            />
 
-            <span className="ml-3 font-mono text-xs text-white/30">
+            <span
+              className="ml-3 font-mono text-xs"
+              style={{
+                color:
+                  "color-mix(in srgb, var(--theme-muted) 45%, transparent)",
+              }}
+            >
               calculator.py
             </span>
           </div>
 
           <div className="overflow-x-auto p-6 font-mono text-sm leading-8">
-            <p className="text-white/30">
+            <p
+              style={{
+                color:
+                  "color-mix(in srgb, var(--theme-muted) 45%, transparent)",
+              }}
+            >
               somansh@portfolio:~/smart-calculator$
             </p>
 
-            <p className="text-white/70">
+            <p
+              style={{
+                color:
+                  "color-mix(in srgb, var(--theme-text) 70%, transparent)",
+              }}
+            >
               python calculator.py
             </p>
 
-            <p className="mt-3 text-green-400">
+            <p
+              className="mt-3"
+              style={{ color: "var(--theme-accent)" }}
+            >
               [INFO] Starting Smart Calculator...
             </p>
 
-            <p className="text-green-400">
+            <p style={{ color: "var(--theme-accent)" }}>
               [INFO] Initializing Tkinter interface...
             </p>
 
-            <p className="text-green-400">
+            <p style={{ color: "var(--theme-accent)" }}>
               [OK] Calculator ready.
             </p>
 
-            <p className="mt-3 text-white/30">
+            <p
+              className="mt-3"
+              style={{
+                color:
+                  "color-mix(in srgb, var(--theme-muted) 45%, transparent)",
+              }}
+            >
               &gt; 12 + 8
             </p>
 
-            <p className="text-white">
+            <p style={{ color: "var(--theme-text)" }}>
               20
             </p>
           </div>
@@ -471,17 +717,38 @@ function SmartCalculator() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="rounded-2xl border border-white/10 bg-white/[0.025] p-6"
+              className="rounded-2xl border p-6"
+              style={{
+                borderColor:
+                  "color-mix(in srgb, var(--theme-border) 25%, transparent)",
+                backgroundColor:
+                  "color-mix(in srgb, var(--theme-surface) 70%, transparent)",
+              }}
             >
-              <p className="font-mono text-xs text-white/30">
+              <p
+                className="font-mono text-xs"
+                style={{
+                  color:
+                    "color-mix(in srgb, var(--theme-muted) 45%, transparent)",
+                }}
+              >
                 {number}
               </p>
 
-              <p className="mt-5 text-2xl font-bold text-green-400">
+              <p
+                className="mt-5 text-2xl font-bold"
+                style={{ color: "var(--theme-accent)" }}
+              >
                 {value}
               </p>
 
-              <p className="mt-1 text-sm text-white/40">
+              <p
+                className="mt-1 text-sm"
+                style={{
+                  color:
+                    "color-mix(in srgb, var(--theme-muted) 55%, transparent)",
+                }}
+              >
                 {label}
               </p>
             </motion.div>
@@ -491,26 +758,63 @@ function SmartCalculator() {
         {/* Overview */}
         <Section number="01" title="Overview">
           <div className="grid gap-8 md:grid-cols-[1.2fr_0.8fr]">
-            <div className="rounded-2xl border border-white/10 bg-white/[0.025] p-7 md:p-9">
-              <p className="text-base leading-8 text-white/60 md:text-lg">
+            <div
+              className="rounded-2xl border p-7 md:p-9"
+              style={{
+                borderColor:
+                  "color-mix(in srgb, var(--theme-border) 25%, transparent)",
+                backgroundColor:
+                  "color-mix(in srgb, var(--theme-surface) 70%, transparent)",
+              }}
+            >
+              <p
+                className="text-base leading-8 md:text-lg"
+                style={{
+                  color:
+                    "color-mix(in srgb, var(--theme-muted) 65%, transparent)",
+                }}
+              >
                 Smart Calculator is a Python desktop project focused on
                 learning how programming logic can be connected to a
                 graphical user interface.
               </p>
 
-              <p className="mt-5 text-base leading-8 text-white/60 md:text-lg">
+              <p
+                className="mt-5 text-base leading-8 md:text-lg"
+                style={{
+                  color:
+                    "color-mix(in srgb, var(--theme-muted) 65%, transparent)",
+                }}
+              >
                 Instead of keeping the project entirely in the terminal,
                 I used Tkinter to experiment with windows, buttons,
                 inputs, events, and user interaction.
               </p>
             </div>
 
-            <div className="rounded-2xl border border-green-400/10 bg-green-400/[0.03] p-7 md:p-9">
-              <p className="font-mono text-xs uppercase tracking-widest text-green-400">
+            <div
+              className="rounded-2xl border p-7 md:p-9"
+              style={{
+                borderColor:
+                  "color-mix(in srgb, var(--theme-accent) 12%, transparent)",
+                backgroundColor:
+                  "color-mix(in srgb, var(--theme-accent) 3%, transparent)",
+              }}
+            >
+              <p
+                className="font-mono text-xs uppercase tracking-widest"
+                style={{ color: "var(--theme-accent)" }}
+              >
                 Project Focus
               </p>
 
-              <ul className="mt-6 space-y-4 text-sm text-white/60">
+              <ul
+                className="mt-6 space-y-4 text-sm"
+                style={{
+                  color:
+                    "color-mix(in srgb, var(--theme-muted) 65%, transparent)",
+                }}
+              >
                 <li>→ Python fundamentals</li>
                 <li>→ GUI development</li>
                 <li>→ Event-driven interaction</li>
@@ -531,17 +835,38 @@ function SmartCalculator() {
             ].map((goal, index) => (
               <motion.div
                 key={goal}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -15 : 15 }}
+                initial={{
+                  opacity: 0,
+                  x: index % 2 === 0 ? -15 : 15,
+                }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.08 }}
-                className="rounded-2xl border border-white/10 bg-white/[0.025] p-6"
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.08,
+                }}
+                className="rounded-2xl border p-6"
+                style={{
+                  borderColor:
+                    "color-mix(in srgb, var(--theme-border) 25%, transparent)",
+                  backgroundColor:
+                    "color-mix(in srgb, var(--theme-surface) 70%, transparent)",
+                }}
               >
-                <span className="font-mono text-sm text-green-400">
+                <span
+                  className="font-mono text-sm"
+                  style={{ color: "var(--theme-accent)" }}
+                >
                   0{index + 1}
                 </span>
 
-                <p className="mt-4 text-white/70">
+                <p
+                  className="mt-4"
+                  style={{
+                    color:
+                      "color-mix(in srgb, var(--theme-muted) 70%, transparent)",
+                  }}
+                >
                   {goal}
                 </p>
               </motion.div>
@@ -558,18 +883,57 @@ function SmartCalculator() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.08 }}
-                className="group rounded-2xl border border-white/10 bg-white/[0.025] p-7 transition hover:border-green-400/20 hover:bg-green-400/[0.03]"
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.08,
+                }}
+                className="group rounded-2xl border p-7 transition"
+                style={{
+                  borderColor:
+                    "color-mix(in srgb, var(--theme-border) 25%, transparent)",
+                  backgroundColor:
+                    "color-mix(in srgb, var(--theme-surface) 70%, transparent)",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor =
+                    "color-mix(in srgb, var(--theme-accent) 20%, transparent)";
+                  e.currentTarget.style.backgroundColor =
+                    "color-mix(in srgb, var(--theme-accent) 3%, transparent)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor =
+                    "color-mix(in srgb, var(--theme-border) 25%, transparent)";
+                  e.currentTarget.style.backgroundColor =
+                    "color-mix(in srgb, var(--theme-surface) 70%, transparent)";
+                }}
               >
-                <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-xl border border-green-400/20 bg-green-400/5 font-mono text-sm text-green-400">
+                <div
+                  className="mb-5 flex h-10 w-10 items-center justify-center rounded-xl border font-mono text-sm"
+                  style={{
+                    borderColor:
+                      "color-mix(in srgb, var(--theme-accent) 20%, transparent)",
+                    backgroundColor:
+                      "color-mix(in srgb, var(--theme-accent) 5%, transparent)",
+                    color: "var(--theme-accent)",
+                  }}
+                >
                   {String(index + 1).padStart(2, "0")}
                 </div>
 
-                <h3 className="text-lg font-bold">
+                <h3
+                  className="text-lg font-bold"
+                  style={{ color: "var(--theme-text)" }}
+                >
                   {feature.title}
                 </h3>
 
-                <p className="mt-3 leading-7 text-white/45">
+                <p
+                  className="mt-3 leading-7"
+                  style={{
+                    color:
+                      "color-mix(in srgb, var(--theme-muted) 55%, transparent)",
+                  }}
+                >
                   {feature.description}
                 </p>
               </motion.div>
@@ -583,9 +947,18 @@ function SmartCalculator() {
             {technologies.map((technology, index) => (
               <div
                 key={technology.name}
-                className="rounded-2xl border border-white/10 bg-white/[0.025] p-7"
+                className="rounded-2xl border p-7"
+                style={{
+                  borderColor:
+                    "color-mix(in srgb, var(--theme-border) 25%, transparent)",
+                  backgroundColor:
+                    "color-mix(in srgb, var(--theme-surface) 70%, transparent)",
+                }}
               >
-                <span className="font-mono text-xs text-green-400">
+                <span
+                  className="font-mono text-xs"
+                  style={{ color: "var(--theme-accent)" }}
+                >
                   0{index + 1}
                 </span>
 
@@ -593,7 +966,13 @@ function SmartCalculator() {
                   {technology.name}
                 </h3>
 
-                <p className="mt-2 text-sm text-white/40">
+                <p
+                  className="mt-2 text-sm"
+                  style={{
+                    color:
+                      "color-mix(in srgb, var(--theme-muted) 50%, transparent)",
+                  }}
+                >
                   {technology.description}
                 </p>
               </div>
@@ -603,8 +982,22 @@ function SmartCalculator() {
 
         {/* Learning */}
         <Section number="05" title="What I Learned">
-          <div className="rounded-2xl border border-white/10 bg-white/[0.025] p-7 md:p-10">
-            <p className="max-w-3xl text-lg leading-8 text-white/60">
+          <div
+            className="rounded-2xl border p-7 md:p-10"
+            style={{
+              borderColor:
+                "color-mix(in srgb, var(--theme-border) 25%, transparent)",
+              backgroundColor:
+                "color-mix(in srgb, var(--theme-surface) 70%, transparent)",
+            }}
+          >
+            <p
+              className="max-w-3xl text-lg leading-8"
+              style={{
+                color:
+                  "color-mix(in srgb, var(--theme-muted) 65%, transparent)",
+              }}
+            >
               This project helped me understand that building software
               isn't only about writing the core logic. The interface,
               user interaction, event handling, and structure all work
@@ -612,44 +1005,75 @@ function SmartCalculator() {
             </p>
 
             <div className="mt-8 grid gap-4 md:grid-cols-3">
-              <div className="rounded-xl border border-white/10 p-5">
-                <p className="font-bold text-green-400">
-                  Logic
-                </p>
-                <p className="mt-2 text-sm leading-6 text-white/40">
-                  Turning mathematical operations into program logic.
-                </p>
-              </div>
+              {[
+                [
+                  "Logic",
+                  "Turning mathematical operations into program logic.",
+                ],
+                [
+                  "UI",
+                  "Building an interface that users can interact with.",
+                ],
+                [
+                  "Structure",
+                  "Connecting multiple parts into one working application.",
+                ],
+              ].map(([title, description]) => (
+                <div
+                  key={title}
+                  className="rounded-xl border p-5"
+                  style={{
+                    borderColor:
+                      "color-mix(in srgb, var(--theme-border) 25%, transparent)",
+                  }}
+                >
+                  <p
+                    className="font-bold"
+                    style={{ color: "var(--theme-accent)" }}
+                  >
+                    {title}
+                  </p>
 
-              <div className="rounded-xl border border-white/10 p-5">
-                <p className="font-bold text-green-400">
-                  UI
-                </p>
-                <p className="mt-2 text-sm leading-6 text-white/40">
-                  Building an interface that users can interact with.
-                </p>
-              </div>
-
-              <div className="rounded-xl border border-white/10 p-5">
-                <p className="font-bold text-green-400">
-                  Structure
-                </p>
-                <p className="mt-2 text-sm leading-6 text-white/40">
-                  Connecting multiple parts into one working application.
-                </p>
-              </div>
+                  <p
+                    className="mt-2 text-sm leading-6"
+                    style={{
+                      color:
+                        "color-mix(in srgb, var(--theme-muted) 50%, transparent)",
+                    }}
+                  >
+                    {description}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </Section>
 
         {/* Development Mindset */}
         <Section number="06" title="Development Mindset">
-          <div className="rounded-2xl border border-green-400/10 bg-green-400/[0.03] p-8 md:p-10">
-            <p className="font-mono text-sm text-green-400">
+          <div
+            className="rounded-2xl border p-8 md:p-10"
+            style={{
+              borderColor:
+                "color-mix(in srgb, var(--theme-accent) 12%, transparent)",
+              backgroundColor:
+                "color-mix(in srgb, var(--theme-accent) 3%, transparent)",
+            }}
+          >
+            <p
+              className="font-mono text-sm"
+              style={{ color: "var(--theme-accent)" }}
+            >
               // BUILD → LEARN → IMPROVE
             </p>
 
-            <p className="mt-6 max-w-3xl text-xl font-semibold leading-9 text-white/75 md:text-2xl">
+            <p
+              className="mt-6 max-w-3xl text-xl font-semibold leading-9 md:text-2xl"
+              style={{
+                color:
+                  "color-mix(in srgb, var(--theme-text) 75%, transparent)",
+              }}
+            >
               Small projects like this are part of the journey — taking
               an idea, turning it into working code, and learning from
               every iteration.
@@ -664,8 +1088,19 @@ function SmartCalculator() {
           viewport={{ once: true }}
           className="mb-24"
         >
-          <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/[0.025] p-8 md:p-12">
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-green-400">
+          <div
+            className="overflow-hidden rounded-3xl border p-8 md:p-12"
+            style={{
+              borderColor:
+                "color-mix(in srgb, var(--theme-border) 25%, transparent)",
+              backgroundColor:
+                "color-mix(in srgb, var(--theme-surface) 70%, transparent)",
+            }}
+          >
+            <p
+              className="font-mono text-xs uppercase tracking-[0.2em]"
+              style={{ color: "var(--theme-accent)" }}
+            >
               Source Code
             </p>
 
@@ -673,7 +1108,13 @@ function SmartCalculator() {
               Explore the project.
             </h2>
 
-            <p className="mt-4 max-w-2xl leading-7 text-white/45">
+            <p
+              className="mt-4 max-w-2xl leading-7"
+              style={{
+                color:
+                  "color-mix(in srgb, var(--theme-muted) 50%, transparent)",
+              }}
+            >
               Check out the source code and see how the calculator was
               built with Python and Tkinter.
             </p>
@@ -682,7 +1123,22 @@ function SmartCalculator() {
               href="https://github.com/SomanshBhai/smart-calculator-python"
               target="_blank"
               rel="noreferrer"
-              className="mt-8 inline-flex rounded-xl border border-green-400/30 bg-green-400/10 px-6 py-3 font-mono text-sm text-green-400 transition hover:bg-green-400/20"
+              className="mt-8 inline-flex rounded-xl border px-6 py-3 font-mono text-sm transition"
+              style={{
+                borderColor:
+                  "color-mix(in srgb, var(--theme-accent) 30%, transparent)",
+                backgroundColor:
+                  "color-mix(in srgb, var(--theme-accent) 10%, transparent)",
+                color: "var(--theme-accent)",
+              }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.backgroundColor =
+                  "color-mix(in srgb, var(--theme-accent) 20%, transparent)")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.backgroundColor =
+                  "color-mix(in srgb, var(--theme-accent) 10%, transparent)")
+              }
             >
               Open GitHub Repository ↗
             </a>
@@ -690,38 +1146,117 @@ function SmartCalculator() {
         </motion.section>
 
         {/* Project Navigation */}
-        <section className="border-t border-white/10 pt-10">
+        <section
+          className="border-t pt-10"
+          style={{
+            borderColor:
+              "color-mix(in srgb, var(--theme-border) 25%, transparent)",
+          }}
+        >
           <div className="grid gap-4 md:grid-cols-2">
             <Link
               to="/projects/portfolio"
-              className="group rounded-2xl border border-white/10 bg-white/[0.025] p-6 transition hover:border-green-400/20"
+              className="group rounded-2xl border p-6 transition"
+              style={{
+                borderColor:
+                  "color-mix(in srgb, var(--theme-border) 25%, transparent)",
+                backgroundColor:
+                  "color-mix(in srgb, var(--theme-surface) 70%, transparent)",
+              }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.borderColor =
+                  "color-mix(in srgb, var(--theme-accent) 20%, transparent)")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.borderColor =
+                  "color-mix(in srgb, var(--theme-border) 25%, transparent)")
+              }
             >
-              <p className="font-mono text-xs text-white/30">
+              <p
+                className="font-mono text-xs"
+                style={{
+                  color:
+                    "color-mix(in srgb, var(--theme-muted) 45%, transparent)",
+                }}
+              >
                 ← PREVIOUS PROJECT
               </p>
 
-              <h3 className="mt-4 text-xl font-bold transition group-hover:text-green-400">
+              <h3
+                className="mt-4 text-xl font-bold transition"
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.color =
+                    "var(--theme-accent)")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.color =
+                    "var(--theme-text)")
+                }
+              >
                 Personal Portfolio
               </h3>
 
-              <p className="mt-2 text-sm text-white/40">
+              <p
+                className="mt-2 text-sm"
+                style={{
+                  color:
+                    "color-mix(in srgb, var(--theme-muted) 45%, transparent)",
+                }}
+              >
                 React • Tailwind CSS • Framer Motion
               </p>
             </Link>
 
             <Link
               to="/projects/nox-busted"
-              className="group rounded-2xl border border-white/10 bg-white/[0.025] p-6 text-left transition hover:border-green-400/20 md:text-right"
+              className="group rounded-2xl border p-6 text-left transition md:text-right"
+              style={{
+                borderColor:
+                  "color-mix(in srgb, var(--theme-border) 25%, transparent)",
+                backgroundColor:
+                  "color-mix(in srgb, var(--theme-surface) 70%, transparent)",
+              }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.borderColor =
+                  "color-mix(in srgb, var(--theme-accent) 20%, transparent)")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.borderColor =
+                  "color-mix(in srgb, var(--theme-border) 25%, transparent)")
+              }
             >
-              <p className="font-mono text-xs text-white/30">
+              <p
+                className="font-mono text-xs"
+                style={{
+                  color:
+                    "color-mix(in srgb, var(--theme-muted) 45%, transparent)",
+                }}
+              >
                 NEXT PROJECT →
               </p>
 
-              <h3 className="mt-4 text-xl font-bold transition group-hover:text-green-400">
+              <h3
+                className="mt-4 text-xl font-bold transition"
+                style={{ color: "var(--theme-text)" }}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.color =
+                    "var(--theme-accent)")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.color =
+                    "var(--theme-text)")
+                }
+              >
                 Nox Busted
               </h3>
 
-              <p className="mt-2 text-sm text-white/40">
+              <p
+                className="mt-2 text-sm"
+                style={{
+                  color:
+                    "color-mix(in srgb, var(--theme-muted) 45%, transparent)",
+                }}
+              >
                 Python • discord.py • Discord
               </p>
             </Link>

@@ -17,14 +17,27 @@ function ThemeSwitcher() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 10 }}
             transition={{ duration: 0.2 }}
-            className="absolute bottom-16 right-0 w-72 overflow-hidden rounded-2xl border border-white/10 bg-black/90 p-4 shadow-2xl backdrop-blur-xl"
+            className="absolute bottom-16 right-0 w-72 overflow-hidden rounded-2xl border p-4 shadow-2xl backdrop-blur-xl"
+            style={{
+              borderColor: "var(--theme-border)",
+              backgroundColor:
+                "color-mix(in srgb, var(--theme-surface) 94%, transparent)",
+              boxShadow:
+                "0 0 35px color-mix(in srgb, var(--theme-accent) 12%, transparent)",
+            }}
           >
             <div className="mb-4">
-              <p className="font-mono text-xs tracking-[0.25em] text-gray-500">
+              <p
+                className="font-mono text-xs tracking-[0.25em]"
+                style={{ color: "var(--theme-muted)" }}
+              >
                 APPEARANCE
               </p>
 
-              <h3 className="mt-1 text-lg font-semibold text-white">
+              <h3
+                className="mt-1 text-lg font-semibold"
+                style={{ color: "var(--theme-text)" }}
+              >
                 Choose Theme
               </h3>
 
@@ -44,20 +57,37 @@ function ThemeSwitcher() {
                   <button
                     key={key}
                     onClick={() => setTheme(key)}
-                    className="flex w-full items-center gap-3 rounded-xl border px-3 py-3 text-left transition-all"
+                    className="flex w-full items-center gap-3 rounded-xl border px-3 py-3 text-left transition-all duration-200"
                     style={{
                       borderColor: isActive
                         ? value.accent
-                        : "rgba(255,255,255,0.1)",
+                        : "var(--theme-border)",
                       backgroundColor: isActive
                         ? `color-mix(in srgb, ${value.accent} 10%, transparent)`
-                        : "rgba(255,255,255,0.03)",
+                        : "color-mix(in srgb, var(--theme-background) 45%, transparent)",
+                    }}
+                    onMouseEnter={(e) => {
+                      if (!isActive) {
+                        e.currentTarget.style.borderColor =
+                          "var(--theme-accent)";
+                        e.currentTarget.style.backgroundColor =
+                          "color-mix(in srgb, var(--theme-accent) 7%, transparent)";
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (!isActive) {
+                        e.currentTarget.style.borderColor =
+                          "var(--theme-border)";
+                        e.currentTarget.style.backgroundColor =
+                          "color-mix(in srgb, var(--theme-background) 45%, transparent)";
+                      }
                     }}
                   >
                     <span
-                      className="h-4 w-4 shrink-0 rounded-full border border-white/10"
+                      className="h-4 w-4 shrink-0 rounded-full border"
                       style={{
                         backgroundColor: value.accent,
+                        borderColor: value.border,
                         boxShadow: isActive
                           ? `0 0 12px ${value.accent}`
                           : "none",
@@ -69,7 +99,7 @@ function ThemeSwitcher() {
                       style={{
                         color: isActive
                           ? value.accent
-                          : "rgba(255,255,255,0.85)",
+                          : "var(--theme-text)",
                       }}
                     >
                       {value.name}
@@ -95,9 +125,13 @@ function ThemeSwitcher() {
         onClick={() => setOpen(!open)}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="flex h-12 w-12 items-center justify-center rounded-full border bg-black/80 text-xl shadow-xl backdrop-blur-xl transition-all"
+        className="flex h-12 w-12 items-center justify-center rounded-full border text-xl shadow-xl backdrop-blur-xl transition-all"
         style={{
-          borderColor: "color-mix(in srgb, var(--theme-accent) 45%, transparent)",
+          borderColor:
+            "color-mix(in srgb, var(--theme-accent) 45%, transparent)",
+          backgroundColor:
+            "color-mix(in srgb, var(--theme-surface) 90%, transparent)",
+          color: "var(--theme-text)",
           boxShadow:
             "0 0 25px color-mix(in srgb, var(--theme-accent) 15%, transparent)",
         }}
